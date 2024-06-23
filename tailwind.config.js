@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      textShadow: {
+        'blue': '0 0 2px #00BFFF, 0 0 5px #00BFFF, 0 0 10px #00BFFF',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -73,5 +76,15 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow-blue': {
+          textShadow: '0 0 2px #00BFFF, 0 0 5px #00BFFF, 0 0 10px #00BFFF',
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
   plugins: [require("tailwindcss-animate")],
 }

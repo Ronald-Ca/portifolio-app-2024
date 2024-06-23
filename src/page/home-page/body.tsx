@@ -4,8 +4,8 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 export default function Body() {
     return (
-        <div className="w-full h-screen bg-slate-800 flex p-2">
-            <div className="flex flex-col justify-center p-6">
+        <div className="w-full h-screen bg-slate-800 flex p-6">
+            <div className="flex flex-col justify-center ml-[50px]">
                 <h1 className="font-medium text-5xl text-gray-200">Olá, eu me chamo Ronald!</h1>
                 <span className="text-gray-600 text-lg">Desenvolvedor Full Stack Júnior</span>
                 <p className="text-xl text-gray-200 w-[50ch] mt-[20px]">Dedicado a melhorar continuamente minhas habilidades e conhecimentos.</p>
