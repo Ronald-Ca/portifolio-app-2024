@@ -12,7 +12,7 @@ export default function Header() {
                 <GiCoffeeCup size={30} className="text-slate-900" />
             </div>
             <div className="flex gap-3">
-                <a className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]" href="">
+                <a href="/about" className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
                     <FaAddressCard color="#00BFFF" />Sobre
                 </a>
                 <a className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]" href="">
@@ -31,6 +31,5 @@ export default function Header() {
                 </a>
             </div>
         </div>
-
     )
 }
