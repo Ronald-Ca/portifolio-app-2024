@@ -1,12 +1,12 @@
 import Footer from "../home-page/footer"
 import Header from "../home-page/header"
-import About from "./about"
+import Skills from "./skills"
 
-export default function AboutPage() {
+export default function SkillPage() {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <About />
+            <Skills />
             <Footer />
         </div>
     )
