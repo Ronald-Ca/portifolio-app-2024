@@ -1,6 +1,5 @@
 import { GiCoffeeCup } from "react-icons/gi";
-import { FaAddressCard } from "react-icons/fa";
-import { FaGamepad } from "react-icons/fa";
+import { FaAddressCard, FaHouseUser, FaGamepad } from "react-icons/fa";
 import { PiProjectorScreenChartFill } from "react-icons/pi";
 import { MdOutlineContactMail } from "react-icons/md";
 import { IoMdLogIn } from "react-icons/io";
@@ -14,13 +13,16 @@ export default function Header() {
                 </a>
             </div>
             <div className="flex gap-3">
+                <a href="/" className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
+                    <FaHouseUser color="#00BFFF" />Início
+                </a>
                 <a href="/about" className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
                     <FaAddressCard color="#00BFFF" />Sobre
                 </a>
                 <a href="/skills" className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
                     <FaGamepad color="#00BFFF" />Skills
                 </a>
-                <a className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]" href="">
+                <a href="/projects" className=" w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-2 bg-slate-900  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
                     <PiProjectorScreenChartFill color="#00BFFF" /> Projetos
                 </a>
             </div>

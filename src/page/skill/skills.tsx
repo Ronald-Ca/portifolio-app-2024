@@ -1,10 +1,10 @@
-import { FaHtml5, FaCss3Alt, FaStar, FaNodeJs, FaDocker, FaGitAlt, FaGithub } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io5";
-import { SiTypescript, SiPersistent } from "react-icons/si";
-import { DiMongodb } from "react-icons/di";
-import { BsFiletypeSql } from "react-icons/bs";
-import { RiSpeakLine, RiFocus3Fill } from "react-icons/ri";
-import { MdGroups2 } from "react-icons/md";
+import { FaHtml5, FaCss3Alt, FaStar, FaNodeJs, FaDocker, FaGitAlt, FaGithub } from "react-icons/fa"
+import { IoLogoJavascript } from "react-icons/io5"
+import { SiTypescript, SiPersistent } from "react-icons/si"
+import { DiMongodb } from "react-icons/di"
+import { BsFiletypeSql } from "react-icons/bs"
+import { RiSpeakLine, RiFocus3Fill } from "react-icons/ri"
+import { MdGroups2 } from "react-icons/md"
 
 export default function Skills() {
     return (
@@ -42,7 +42,7 @@ export default function Skills() {
                 ))}
             </div>
         </div>
-    );
+    )
 }
 
 const skills = [
@@ -56,11 +56,11 @@ const skills = [
     { name: "Docker", icon: FaDocker, color: "text-[#0DB7ED]", stars: 3 },
     { name: "Git", icon: FaGitAlt, color: "text-[#F05032]", stars: 3 },
     { name: "Github", icon: FaGithub, color: "text-[#171515]", stars: 3 },
-];
+]
 
 const competences = [
     { name: "Comunicação", icon: RiSpeakLine, color: "text-[#00BFFF]", stars: 3 },
     { name: "Trabalho em equipe", icon: MdGroups2, color: "text-[#00BFFF]", stars: 3 },
     { name: "Foco", icon: RiFocus3Fill, color: "text-[#00BFFF]", stars: 3 },
     { name: "Persistência", icon: SiPersistent, color: "text-[#00BFFF]", stars: 3 },
-];
+]

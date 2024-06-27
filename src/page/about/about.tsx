@@ -63,7 +63,7 @@ export default function About() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 const aboutInfo = [
@@ -82,7 +82,7 @@ const aboutInfo = [
         description: "Resido em Planalto da Serra - MT.",
         icon: FaHouseDamage,
     },
-];
+]
 
 const experiences = [
     {
@@ -110,4 +110,4 @@ const experiences = [
         ],
         stacks: ["JavaScript", "TypeScript", "React", "NodeJS", "SQL", "SQL SERVER", "Git", "GitHub", "Azure"],
     },
-];
+]
