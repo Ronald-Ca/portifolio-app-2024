@@ -1,9 +1,26 @@
-import { BsFiletypeSql } from "react-icons/bs"
-import { DiMongodb } from "react-icons/di"
-import { FaCss3Alt, FaDocker, FaGitAlt, FaGithub, FaHtml5, FaStar } from "react-icons/fa"
-import { FaNodeJs } from "react-icons/fa6"
-import { IoLogoJavascript } from "react-icons/io"
-import { SiTypescript } from "react-icons/si"
+import { Button } from '@/components/ui/button';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { DialogHeader } from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@radix-ui/react-dialog';
+import { IoIosClose } from "react-icons/io";
+
+interface Project {
+    name: string;
+    color: string;
+    stars: number;
+    previewImage: string;
+    description: string;
+}
+
+const projects: Project[] = [
+    {
+        name: "NLW Explorer",
+        color: "text-[#FF4500]",
+        stars: 3,
+        previewImage: "src/assets/nlw-explorer.png",
+        description: "Este é um projeto, bem projetado, cheio de projetos, improjetável.",
+    },
+];
 
 export default function Projects() {
     return (
@@ -13,30 +30,56 @@ export default function Projects() {
             </div>
             <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
                 {projects.map((project, index) => (
-                    <div key={index} className="w-[200px] border-[1px] rounded-[10px] border-[#00BFFF] p-[20px] text-center flex flex-col items-center">
-                        <h2 className="text-gray-300 text-2xl font-semibold mb-4">{project.name}</h2>
-                        <project.icon size={60} className={`mb-4 ${project.color}`} />
-                        <div className="flex justify-center">
-                            {Array(project.stars).fill(0).map((_, i) => (
-                                <FaStar key={i} className="text-[#00BFFF] mr-1" />
-                            ))}
-                        </div>
-                    </div>
+                    <ProjectCard key={index} project={project} />
                 ))}
             </div>
         </div>
     )
 }
 
-const projects = [
-    { name: "Projeto 1", icon: FaHtml5, color: "text-[#FF4500]", stars: 3 },
-    { name: "Projeto 2", icon: FaCss3Alt, color: "text-[#00BFFF]", stars: 3 },
-    { name: "Projeto 3", icon: IoLogoJavascript, color: "text-[#FFFF00]", stars: 3 },
-    { name: "Projeto 4", icon: SiTypescript, color: "text-[#007ACC]", stars: 3 },
-    { name: "Projeto 5", icon: FaNodeJs, color: "text-[#68A063]", stars: 3 },
-    { name: "Projeto 6", icon: DiMongodb, color: "text-[#4DB33D]", stars: 3 },
-    { name: "Projeto 7", icon: BsFiletypeSql, color: "text-[#FFD700]", stars: 3 },
-    { name: "Projeto 8", icon: FaDocker, color: "text-[#0DB7ED]", stars: 3 },
-    { name: "Projeto 9", icon: FaGitAlt, color: "text-[#F05032]", stars: 3 },
-    { name: "Projeto 10", icon: FaGithub, color: "text-[#171515]", stars: 3 },
-]
+interface ProjectCardProps {
+    project: Project;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Card className="bg-slate-950 w-[400px] border-[2px] rounded-[10px] border-[#00BFFF] p-[20px] text-center cursor-pointer transform transition-transform duration-300 hover:scale-105">
+                    <CardHeader>
+                        <img src={project.previewImage} alt={`${project.name} preview`} className="mb-4 rounded-[10px] border-[2px] border-[#00BFFF]" />
+                        <CardTitle className="text-gray-300 text-2xl font-semibold">{project.name}</CardTitle>
+                        <CardDescription className="text-gray-400">{project.description}</CardDescription>
+                    </CardHeader>
+                </Card>
+            </DialogTrigger>
+            <DialogContent className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 ">
+                <div className="bg-slate-900 rounded-lg p-6 max-w-lg mx-auto relative border-[2px] border-[#00BFFF]">
+                    <DialogClose asChild>
+                        <Button className='absolute top-4 right-4'>
+                            <IoIosClose size={30} className="text-[#00BFFF]" />
+                        </Button>
+                    </DialogClose>
+                    <DialogHeader>
+                        <DialogTitle>{project.name}</DialogTitle>
+                        <DialogDescription>{project.description}</DialogDescription>
+                    </DialogHeader>
+                    {/* <ProjectDetails project={project} /> */}
+                </div>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+// interface ProjectDetailsProps {
+//     project: Project;
+// }
+
+// const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
+//     return (
+//         <div className="p-4">
+//             <div className="flex justify-center">
+//             </div>
+//         </div>
+//     )
+// }
