@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button';
 import { IoSendOutline } from "react-icons/io5";
 
 function ContactForm() {
-    const form = useForm();
+    const form = useForm()
 
     const onSubmit = (data: any) => {
-        console.log(data);
-    };
+        console.log(data)
+    }
 
     return (
         <FormProvider {...form}>
@@ -81,7 +81,7 @@ function ContactForm() {
                 </Button>
             </form>
         </FormProvider>
-    );
+    )
 }
 
 export default function Contact() {
@@ -94,5 +94,5 @@ export default function Contact() {
                 <ContactForm />
             </div>
         </div>
-    );
+    )
 }

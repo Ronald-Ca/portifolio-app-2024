@@ -30,7 +30,7 @@ export default function Header() {
                 <a href="/contact" className="w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-1 bg-slate-700  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
                     <MdOutlineContactMail color="#00BFFF" />Contato
                 </a>
-                <a href="" className="w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-1 bg-slate-950  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
+                <a href="/login" className="w-[100px] border border-gray-600 rounded-[10px] p-1 flex justify-center items-center gap-1 bg-slate-950  text-gray-200 transition-transform duration-300 hover:bg-[#1c222b] hover:border-[#00BFFF]">
                     <IoMdLogIn color="#00BFFF" /> Login
                 </a>
             </div>
