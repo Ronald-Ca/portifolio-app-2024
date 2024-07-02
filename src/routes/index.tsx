@@ -5,6 +5,7 @@ import SkillPage from '@/page/skill'
 import ProjectPage from '@/page/projects'
 import ContactPage from '@/page/contact'
 import Login from '@/page/login/login'
+import Config from '@/page/config'
 
 export default function App() {
     return (
@@ -15,6 +16,7 @@ export default function App() {
             <Route path="/projects" element={<ProjectPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/config" element={<Config />} />
         </Routes>
     )
 }

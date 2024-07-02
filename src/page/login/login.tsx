@@ -39,7 +39,6 @@ function LoginForm() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="w-[200px] mt-[30px] hover:bg-[#00BFFF] hover:text-slate-900 flex gap-[5px] font-semibold text-[15px]">Entrar</Button>
             </form>
         </FormProvider>
     )
@@ -49,12 +48,16 @@ function LoginForm() {
 export default function Login() {
     return (
         <div className="bg-gradient-to-r from-slate-950 to-slate-800 h-screen w-full flex justify-center items-center">
-            <Card className="w-[400px] h-[400px] bg-slate-950 rounded-[10px] flex flex-col items-center justify-center">
+            <Card className="w-[400px] h-[400px] bg-slate-900 rounded-[10px] border-[2px] border-[#00BFFF] flex flex-col items-center justify-center">
                 <a href="/">
-                    <img src="src/assets/icon.png" alt="" className=" rounded-[10px] mb-[10px]" />
+                    <img src="src/assets/icon.png" width={50} height={50} className=" rounded-[10px] mb-[10px]" />
                 </a>
-                <h1 className="text-[30px] text-gray-50 font-semibold">Login</h1>
                 <LoginForm />
+                <a href="/config">
+                    <Button className="bg-slate-950 w-[200px] mt-[30px] hover:bg-[#00BFFF] hover:text-slate-900 flex gap-[5px] font-semibold text-[15px]">
+                        Entrar
+                    </Button>
+                </a>
             </Card>
         </div>
     )
