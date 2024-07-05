@@ -29,10 +29,12 @@ export default function ConfigHome() {
                         className="w-[250px] h-[250px] object-cover rounded-full"
                     />
                 )}
-                <FaCamera
-                    className="text-[#00BFFF] text-[35px] cursor-pointer absolute bottom-[10px] right-[50px] transform translate-x-1/2 translate-y-1/2 hover:scale-110 transition-transform duration-300"
-                    onClick={handleCameraClick}
-                />
+                <div className="cursor-pointer absolute bottom-[10px] right-[50px] transform translate-x-1/2 translate-y-1/2 hover:scale-110 transition-transform duration-300 bg-slate-950 p-[10px] rounded-full">
+                    <FaCamera
+                        className="text-[#00BFFF] text-[30px]"
+                        onClick={handleCameraClick}
+                    />
+                </div>
                 <Input
                     type="file"
                     className="hidden"
