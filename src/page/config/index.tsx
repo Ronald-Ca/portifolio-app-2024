@@ -40,8 +40,8 @@ export default function Config() {
                     </Button>
                 </a>
             </header>
-            <main className="flex">
-                <menu className="w-[250px] bg-slate-950 h-screen border-r-[1px] border-r-[#00BFFF]">
+            <main className="flex flex-1">
+                <menu className="w-[250px] bg-slate-950 min-h-full border-r-[1px] border-r-[#00BFFF]">
                     <ul className="flex flex-col justify-center items-center gap-[10px] text-gray-50">
                         <li
                             onClick={() => setActiveComponent('home')}
