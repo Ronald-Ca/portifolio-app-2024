@@ -56,10 +56,10 @@ export default function Projects() {
 }
 
 interface ProjectCardProps {
-    project: Project;
+    project: Project
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard = ({ project }: ProjectCardProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
