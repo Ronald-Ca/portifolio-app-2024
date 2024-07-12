@@ -155,7 +155,7 @@ export default function ConfigAbout() {
                         <CardTitle className="text-gray-300 text-2xl font-semibold">{experience.organization}</CardTitle>
                     </Card>
                 ))}
-                <Card className="bg-slate-950 w-[300px] h-[300px] border-[2px] rounded-[10px] border-[#00BFFF] p-[20px] flex justify-center items-center relative cursor-pointer transform hover:scale-105 transition-transform duration-300" onClick={handleAddClick}>
+                <Card onClick={handleAddClick} className="bg-slate-950 w-[300px] h-[300px] border-[2px] rounded-[10px] border-[#00BFFF] p-[20px] flex justify-center items-center relative cursor-pointer transform hover:scale-105 transition-transform duration-300" >
                     <IoIosAdd className="text-gray-300 text-[100px]" />
                 </Card>
             </div>
