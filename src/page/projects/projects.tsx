@@ -7,8 +7,6 @@ import { IoIosClose } from "react-icons/io";
 
 interface Project {
     name: string;
-    color: string;
-    stars: number;
     previewImage: string;
     description: string;
     link: string;
@@ -18,8 +16,6 @@ interface Project {
 const projects: Project[] = [
     {
         name: "NLW Explorer",
-        color: "text-[#FF4500]",
-        stars: 3,
         previewImage: "src/assets/nlw-explorer.png",
         description: "Este é um projeto, bem projetado, cheio de projetos, improjetável.",
         link: "https://ronald-ca.github.io/nlw-site-explorer/",
