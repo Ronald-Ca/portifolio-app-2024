@@ -21,7 +21,7 @@ const projects: Project[] = [
         link: "https://ronald-ca.github.io/nlw-site-explorer/",
         stacks: ["HTML", "CSS"],
     },
-];
+]
 
 const stackColors: { [key: string]: string } = {
     HTML: "bg-[#FF4500]",
@@ -34,7 +34,7 @@ const stackColors: { [key: string]: string } = {
     Django: "bg-[#0DB7ED]",
     Git: "bg-[#F05032]",
     GitHub: "bg-[#171515]",
-};
+}
 
 export default function Projects() {
     return (
