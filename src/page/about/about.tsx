@@ -6,7 +6,7 @@ import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 
 export default function About() {
     return (
-        <div className="min-h-screen bg-slate-800 flex flex-col p-6">
+        <div className="min-h-screen bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 animate-gradient-move flex flex-col p-6">
             <div>
                 <div className="flex justify-between items-center mb-6">
                     <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Quem sou eu?</h1>
@@ -33,8 +33,10 @@ export default function About() {
                 </div>
             </div>
             <div>
-                <div className="flex justify-center mb-6 mt-6">
+                <div className="flex justify-center items-center gap-[10px] mb-6 mt-6">
+                    <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
                     <h1 className="text-center text-[50px] font-semibold text-gray-300">Experiências</h1>
+                    <hr className="border-[2px] border-[#00BFFF] w-[50%] " />
                 </div>
                 <div className="flex flex-wrap justify-between gap-5">
                     {experiences.map((experience, index) => (
