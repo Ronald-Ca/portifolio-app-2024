@@ -36,7 +36,7 @@ export default function About() {
                 <div className="flex justify-center items-center gap-[10px] mb-6 mt-6">
                     <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
                     <h1 className="text-center text-[50px] font-semibold text-gray-300">Experiências</h1>
-                    <hr className="border-[2px] border-[#00BFFF] w-[50%] " />
+                    <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
                 </div>
                 <div className="flex flex-wrap justify-between gap-5">
                     {experiences.map((experience, index) => (

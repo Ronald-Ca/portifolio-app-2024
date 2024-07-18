@@ -8,13 +8,13 @@ import { MdGroups2 } from "react-icons/md"
 
 export default function Skills() {
     return (
-        <div className="flex-grow bg-slate-800 flex flex-col p-6">
-            <div className="flex">
+        <div className="flex-grow flex flex-col p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 animate-gradient-move">
+            <div className="flex mb-6">
                 <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Habilidades</h1>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
+            <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px] ">
                 {skills.map((skill, index) => (
-                    <div key={index} className="w-[200px] border-[1px] rounded-[10px] border-[#00BFFF] p-[20px] text-center flex flex-col items-center">
+                    <div key={index} className="w-[200px] border-[1px] rounded-[10px] border-[#00BFFF] p-[20px] text-center flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
                         <h2 className="text-gray-300 text-2xl font-semibold mb-4">{skill.name}</h2>
                         <skill.icon size={60} className={`mb-4 ${skill.color}`} />
                         <div className="flex justify-center">
@@ -25,8 +25,10 @@ export default function Skills() {
                     </div>
                 ))}
             </div>
-            <div className="flex">
-                <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Competências</h1>
+            <div className="flex justify-center items-center gap-[10px] mb-6 mt-6">
+                <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
+                <h1 className="text-center text-[50px] font-semibold text-gray-300">Competências</h1>
+                <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
             </div>
             <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
                 {competences.map((competence, index) => (

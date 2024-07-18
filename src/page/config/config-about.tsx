@@ -12,8 +12,8 @@ import { FaCamera, FaEdit } from "react-icons/fa"
 import { IoIosAdd, IoIosClose } from "react-icons/io";
 
 interface Experience {
-    organization: string
-    time: string
+    company: string
+    period: string
     role: string
     activities: string[]
     stacks: string[]
@@ -21,8 +21,8 @@ interface Experience {
 
 const experiences: Experience[] = [
     {
-        organization: "BSN Solution",
-        time: "2021 - Atual",
+        company: "BSN Solution",
+        period: "2021 - Atual",
         role: "Desenvolvedor Front-end",
         activities: [
             "Desenvolvimento de aplicações web",
@@ -152,7 +152,7 @@ export default function ConfigAbout() {
                         <FaEdit
                             className="text-[30px] text-slate-950 absolute top-[-5px] right-[-5px] bg-[#00BFFF] p-[3px] rounded-[3px]"
                         />
-                        <CardTitle className="text-gray-300 text-2xl font-semibold">{experience.organization}</CardTitle>
+                        <CardTitle className="text-gray-300 text-2xl font-semibold">{experience.company}</CardTitle>
                     </Card>
                 ))}
                 <Card onClick={handleAddClick} className="bg-slate-950 w-[300px] h-[300px] border-[2px] rounded-[10px] border-[#00BFFF] p-[20px] flex justify-center items-center relative cursor-pointer transform hover:scale-105 transition-transform duration-300" >
@@ -174,8 +174,8 @@ export default function ConfigAbout() {
                             <form onSubmit={(e: any) => {
                                 e.preventDefault()
                                 const newExperience = {
-                                    organization: e.target.organization.value,
-                                    time: e.target.time.value,
+                                    company: e.target.company.value,
+                                    period: e.target.period.value,
                                     role: e.target.role.value,
                                     activities: e.target.activities.value.split(','),
                                     stacks: e.target.stacks.value.split(',')
@@ -183,8 +183,8 @@ export default function ConfigAbout() {
                                 handleSave(newExperience)
                             }}>
                                 <div className="flex flex-col gap-4">
-                                    <input type="text" name="organization" placeholder="Organização" defaultValue={selectedExperience?.organization || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
-                                    <input type="text" name="time" placeholder="Tempo" defaultValue={selectedExperience?.time || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
+                                    <input type="text" name="company" placeholder="Organização" defaultValue={selectedExperience?.company || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
+                                    <input type="text" name="period" placeholder="Tempo" defaultValue={selectedExperience?.period || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
                                     <input type="text" name="role" placeholder="Função" defaultValue={selectedExperience?.role || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
                                     <textarea name="activities" placeholder="Atividades (separadas por vírgula)" defaultValue={selectedExperience?.activities.join(', ') || ''} className="p-2 rounded bg-slate-800 text-gray-100"></textarea>
                                     <input type="text" name="stacks" placeholder="Stacks (separadas por vírgula)" defaultValue={selectedExperience?.stacks.join(', ') || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
