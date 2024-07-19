@@ -4,6 +4,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { IoSendOutline } from "react-icons/io5";
+import { FaDiscord, FaGithub, FaInstagramSquare, FaLinkedin, FaWhatsappSquare } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 
 function ContactForm() {
     const form = useForm()
@@ -86,11 +88,19 @@ function ContactForm() {
 
 export default function Contact() {
     return (
-        <div className="flex-grow bg-slate-800 flex flex-col p-6">
-            <div className="flex">
+        <div className="min-h-full bg-slate-800 flex flex-col p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 animate-gradient-move">
+            <div className="flex mb-[15px]">
                 <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Entrar em contato</h1>
             </div>
-            <div className="flex flex-wrap justify-center border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
+            <div className="flex flex-col items-center justify-center border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
+                <div className='flex gap-[10px]'>
+                    <FaLinkedin className='cursor-pointer text-[#00BFFF] text-[40px] transform hover:scale-105 transition-transform duration-300' />
+                    <FaInstagramSquare className='cursor-pointer text-[#00BFFF] text-[40px] transform hover:scale-105 transition-transform duration-300' />
+                    <FaWhatsappSquare className='cursor-pointer text-[#00BFFF] text-[40px] transform hover:scale-105 transition-transform duration-300' />
+                    <FaGithub className='cursor-pointer text-[#00BFFF] text-[40px] transform hover:scale-105 transition-transform duration-300' />
+                    <MdEmail className='cursor-pointer text-[#00BFFF] text-[40px] transform hover:scale-105 transition-transform duration-300' />
+                    <FaDiscord className='cursor-pointer text-[#00BFFF] text-[40px] transform hover:scale-105 transition-transform duration-300' />
+                </div>
                 <ContactForm />
             </div>
         </div>

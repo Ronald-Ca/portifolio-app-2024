@@ -1,16 +1,15 @@
-import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { DialogHeader } from '@/components/ui/dialog';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@radix-ui/react-dialog';
-import { useState } from 'react';
-import { IoIosClose } from "react-icons/io";
+import { DialogHeader } from '@/components/ui/dialog'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@radix-ui/react-dialog'
+import { useState } from 'react'
+import { IoIosClose } from "react-icons/io"
 
 interface Project {
-    name: string;
-    previewImage: string;
-    description: string;
-    link: string;
-    stacks?: string[];
+    name: string
+    previewImage: string
+    description: string
+    link: string
+    stacks?: string[]
 }
 
 const projects: Project[] = [
@@ -38,8 +37,8 @@ const stackColors: { [key: string]: string } = {
 
 export default function Projects() {
     return (
-        <div className="flex-grow bg-slate-800 flex flex-col p-6">
-            <div className="flex">
+        <div className="flex flex-col min-h-full p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 animate-gradient-move">
+            <div className="flex mb-6">
                 <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Projetos</h1>
             </div>
             <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
@@ -72,9 +71,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             <DialogContent className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" onClick={() => setIsOpen(false)}>
                 <div className="bg-slate-900 rounded-lg p-6 max-w-[800px] mx-auto relative border-[2px] border-[#00BFFF]" onClick={(e) => e.stopPropagation()}>
                     <DialogClose asChild>
-                        <Button className='absolute top-0 right-0' onClick={() => setIsOpen(false)}>
-                            <IoIosClose size={30} className="text-[#00BFFF]" />
-                        </Button>
+                        <IoIosClose size={35} className="text-[#00BFFF] absolute top-0 right-0 cursor-pointer" onClick={() => setIsOpen(false)} />
                     </DialogClose>
                     <DialogHeader>
                         <DialogTitle className='text-gray-100 text-center font-semibold  text-[30px]'>{project.name}</DialogTitle>
