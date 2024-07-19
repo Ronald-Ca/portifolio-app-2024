@@ -1,68 +1,76 @@
-import { FaHtml5, FaCss3Alt, FaStar, FaNodeJs, FaDocker, FaGitAlt, FaGithub } from "react-icons/fa"
-import { IoLogoJavascript } from "react-icons/io5"
-import { SiTypescript, SiPersistent } from "react-icons/si"
-import { DiMongodb } from "react-icons/di"
-import { BsFiletypeSql } from "react-icons/bs"
-import { RiSpeakLine, RiFocus3Fill } from "react-icons/ri"
-import { MdGroups2 } from "react-icons/md"
+import { FaStar } from "react-icons/fa";
+import { ReactElement, useEffect, useState } from "react";
+import { loadIcon } from "@/utils/dynamic-imports";
+
+interface Skill {
+    name: string
+    iconName: string
+    color: string
+    stars: number
+    tipo: 'skill' | 'competence'
+}
+
+const skills: Skill[] = [
+    { name: "HTML", iconName: "FaHtml5", color: "#FF4500", stars: 5, tipo: 'skill' },
+    { name: "CSS", iconName: "FaCss3Alt", color: "#00BFFF", stars: 5, tipo: 'skill' },
+    { name: "JavaScript", iconName: "IoLogoJavascript", color: "#FFFF00", stars: 4, tipo: 'skill' },
+    { name: "TypeScript", iconName: "SiTypescript", color: "#007ACC", stars: 4, tipo: 'skill' },
+    { name: "NodeJS", iconName: "FaNodeJs", color: "#68A063", stars: 4, tipo: 'skill' },
+    { name: "MongoDB", iconName: "DiMongodb", color: "#4DB33D", stars: 4, tipo: 'skill' },
+    { name: "SQL", iconName: "BsFiletypeSql", color: "#FFD700", stars: 3, tipo: 'skill' },
+    { name: "Docker", iconName: "FaDocker", color: "#0DB7ED", stars: 2, tipo: 'skill' },
+    { name: "Git", iconName: "FaGitAlt", color: "#F05032", stars: 4, tipo: 'skill' },
+    { name: "Github", iconName: "FaGithub", color: "#171515", stars: 4, tipo: 'skill' },
+    { name: "Comunicação", iconName: "RiSpeakLine", color: "#00BFFF", stars: 3, tipo: 'competence' },
+    { name: "Trabalho em equipe", iconName: "MdGroups2", color: "#00BFFF", stars: 3, tipo: 'competence' },
+    { name: "Foco", iconName: "RiFocus3Fill", color: "#00BFFF", stars: 3, tipo: 'competence' },
+    { name: "Persistência", iconName: "SiPersistent", color: "#00BFFF", stars: 3, tipo: 'competence' },
+]
 
 export default function Skills() {
+    const [loadedSkills, setLoadedSkills] = useState<(Skill & { icon: ReactElement })[]>([])
+
+    useEffect(() => {
+        async function loadSkillsAndCompetences() {
+            const skillsWithIcons = await Promise.all(
+                skills.map(async (skill) => {
+                    const icon = await loadIcon(skill.iconName, skill.color)
+                    return { ...skill, icon }
+                })
+            )
+            setLoadedSkills(skillsWithIcons)
+        }
+        loadSkillsAndCompetences()
+    }, [])
+
+    const renderSkillsOrCompetences = (tipo: 'skill' | 'competence') => (
+        <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
+            {loadedSkills.filter(skill => skill.tipo === tipo).map((skill, index) => (
+                <div key={index} className="w-[200px] border-[1px] rounded-[10px] border-[#00BFFF] p-[20px] text-center flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
+                    <h2 className="text-gray-300 text-2xl font-semibold mb-4">{skill.name}</h2>
+                    {skill.icon}
+                    <div className="flex justify-center mt-[10px]">
+                        {Array(skill.stars).fill(0).map((_, i) => (
+                            <FaStar key={i} className="text-[#00BFFF] mr-1" />
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+
     return (
         <div className="flex-grow flex flex-col p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 animate-gradient-move">
             <div className="flex mb-6">
                 <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Habilidades</h1>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px] ">
-                {skills.map((skill, index) => (
-                    <div key={index} className="w-[200px] border-[1px] rounded-[10px] border-[#00BFFF] p-[20px] text-center flex flex-col items-center transform hover:scale-105 transition-transform duration-300">
-                        <h2 className="text-gray-300 text-2xl font-semibold mb-4">{skill.name}</h2>
-                        <skill.icon size={60} className={`mb-4 ${skill.color}`} />
-                        <div className="flex justify-center">
-                            {Array(skill.stars).fill(0).map((_, i) => (
-                                <FaStar key={i} className="text-[#00BFFF] mr-1" />
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
+            {renderSkillsOrCompetences('skill')}
             <div className="flex justify-center items-center gap-[10px] mb-6 mt-6">
                 <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
                 <h1 className="text-center text-[50px] font-semibold text-gray-300">Competências</h1>
                 <hr className="border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]" />
             </div>
-            <div className="flex flex-wrap justify-center gap-4 border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
-                {competences.map((competence, index) => (
-                    <div key={index} className="w-[200px] border-[1px] rounded-[10px] border-[#00BFFF] p-[20px] text-center flex flex-col items-center">
-                        <h2 className="text-gray-300 text-2xl font-semibold mb-4">{competence.name}</h2>
-                        <competence.icon size={60} className={`mb-4 ${competence.color}`} />
-                        <div className="flex justify-center">
-                            {Array(competence.stars).fill(0).map((_, i) => (
-                                <FaStar key={i} className="text-[#00BFFF] mr-1" />
-                            ))}
-                        </div>
-                    </div>
-                ))}
-            </div>
+            {renderSkillsOrCompetences('competence')}
         </div>
     )
 }
-
-const skills = [
-    { name: "HTML", icon: FaHtml5, color: "text-[#FF4500]", stars: 3 },
-    { name: "CSS", icon: FaCss3Alt, color: "text-[#00BFFF]", stars: 3 },
-    { name: "JavaScript", icon: IoLogoJavascript, color: "text-[#FFFF00]", stars: 3 },
-    { name: "TypeScript", icon: SiTypescript, color: "text-[#007ACC]", stars: 3 },
-    { name: "NodeJS", icon: FaNodeJs, color: "text-[#68A063]", stars: 3 },
-    { name: "MongoDB", icon: DiMongodb, color: "text-[#4DB33D]", stars: 3 },
-    { name: "SQL", icon: BsFiletypeSql, color: "text-[#FFD700]", stars: 3 },
-    { name: "Docker", icon: FaDocker, color: "text-[#0DB7ED]", stars: 3 },
-    { name: "Git", icon: FaGitAlt, color: "text-[#F05032]", stars: 3 },
-    { name: "Github", icon: FaGithub, color: "text-[#171515]", stars: 3 },
-]
-
-const competences = [
-    { name: "Comunicação", icon: RiSpeakLine, color: "text-[#00BFFF]", stars: 3 },
-    { name: "Trabalho em equipe", icon: MdGroups2, color: "text-[#00BFFF]", stars: 3 },
-    { name: "Foco", icon: RiFocus3Fill, color: "text-[#00BFFF]", stars: 3 },
-    { name: "Persistência", icon: SiPersistent, color: "text-[#00BFFF]", stars: 3 },
-]
