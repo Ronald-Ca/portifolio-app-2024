@@ -27,7 +27,7 @@ export default function Config() {
     };
 
     return (
-        <div className="flex flex-col min-h-screen bg-slate-800">
+        <div className="flex flex-col min-h-screen bg-gradient-to-r from-slate-950 via-slate-900 to-gray-950 animate-gradient-move">
             <header className="flex items-center justify-between p-[20px] bg-slate-950 border-b-[1px] border-b-[#00BFFF]">
                 <h1 className="text-[#00BFFF] text-[25px] font-bold flex items-center gap-[10px]">
                     <FaEdit className="mt-[2px] text-[#00BFFF]" />

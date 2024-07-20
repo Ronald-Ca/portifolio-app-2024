@@ -143,7 +143,9 @@ export default function ConfigAbout() {
                 <div className="flex flex-col gap-[10px]">
                     {aboutSubmit()}
                 </div>
-                <Button type="submit" className="bg-[#00BFFF] text-gray-50 absolute top-[120px] right-[40px] w-[100px]">Salvar</Button>
+                <Button type="submit" className="bg-[#00BFFF] text-slate-950 border-[1px] border-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF] absolute top-[120px] right-[40px] w-[100px]">
+                    Salvar
+                </Button>
             </div>
             <Separator className="w-[95%] h-[1px] bg-[#00BFFF]" orientation="horizontal" />
             <div className="flex gap-[20px]">

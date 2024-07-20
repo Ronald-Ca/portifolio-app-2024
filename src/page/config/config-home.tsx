@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -65,6 +66,7 @@ export default function ConfigHome() {
                             </FormItem>
                         )}
                     />
+
                 </form>
             </FormProvider>
         )
@@ -93,6 +95,9 @@ export default function ConfigHome() {
                         onChange={handleImageChange}
                         ref={fileInputRef}
                     />
+                    <Button className="w-[100px] flex gap-[5px] bg-[#00BFFF] text-slate-950 border-[1px] border-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF] absolute top-[-10px] right-[-160px]">
+                        Salvar
+                    </Button>
                 </div>
                 <div className="flex flex-col gap-[10px]">
                     {handleSubmit()}
