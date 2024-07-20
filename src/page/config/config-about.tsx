@@ -1,15 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardTitle } from "@/components/ui/card"
 import { DialogHeader } from "@/components/ui/dialog"
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { FormAbout } from "@/form/form-about"
+import { FormExperience } from "@/form/form-experience"
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog"
 import { Separator } from "@radix-ui/react-separator"
 import { useRef, useState } from "react"
-import { FormProvider, useForm } from "react-hook-form"
 import { FaCamera, FaEdit } from "react-icons/fa"
-import { IoIosAdd, IoIosClose } from "react-icons/io";
+import { IoIosAdd, IoIosClose } from "react-icons/io"
 
 interface Experience {
     company: string
@@ -38,7 +37,6 @@ export default function ConfigAbout() {
     const [selectedExperience, setSelectedExperience] = useState<Experience>()
     const [imagePreview, setImagePreview] = useState('https://avatars.githubusercontent.com/u/104284345?v=4')
     const fileInputRef = useRef<HTMLInputElement>(null)
-    const form = useForm()
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
@@ -67,55 +65,6 @@ export default function ConfigAbout() {
         setIsOpen(false)
     }
 
-    const aboutSubmit = () => {
-        const onSubmit = (data: any) => {
-            console.log(data)
-        }
-
-        return (
-            <FormProvider {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col items-center gap-[10px]'>
-                    <FormField
-                        control={form.control}
-                        name="iam"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='text-gray-50'>Eu:</FormLabel>
-                                <FormControl>
-                                    <Input {...field} placeholder="Quem sou eu?" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="address"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='text-gray-50'>Endereço:</FormLabel>
-                                <FormControl>
-                                    <Input {...field} placeholder="Qual seu endereço?" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="formation"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='text-gray-50'>Formação:</FormLabel>
-                                <FormControl>
-                                    <Textarea {...field} placeholder="Qual sua formação?" className="border-[1px] border-gray-50 w-[500px] h-[200px] bg-slate-950 text-gray-50" />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                </form>
-            </FormProvider>
-        )
-    }
-
     return (
         <div className="flex flex-col justify-center items-center border-[1px] border-[#00BFFF] pt-[20px] pb-[20px] rounded-[10px] gap-[20px]">
             <div className="flex gap-[50px] items-center">
@@ -141,7 +90,7 @@ export default function ConfigAbout() {
                     />
                 </div>
                 <div className="flex flex-col gap-[10px]">
-                    {aboutSubmit()}
+                    <FormAbout />
                 </div>
                 <Button type="submit" className="bg-[#00BFFF] text-slate-950 border-[1px] border-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF] absolute top-[120px] right-[40px] w-[100px]">
                     Salvar
@@ -168,33 +117,12 @@ export default function ConfigAbout() {
                             <IoIosClose size={35} className="text-[#00BFFF] absolute top-0 right-0 cursor-pointer" onClick={() => setIsOpen(false)} />
                         </DialogClose>
                         <DialogHeader>
-                            <DialogTitle className='text-gray-100 text-center font-semibold text-[30px]'>
+                            <DialogTitle className="text-gray-100 text-center font-semibold text-[30px]">
                                 {selectedExperience ? "Editar Experiência" : "Adicionar Experiência"}
                             </DialogTitle>
                         </DialogHeader>
                         <DialogDescription>
-                            <form onSubmit={(e: any) => {
-                                e.preventDefault()
-                                const newExperience = {
-                                    company: e.target.company.value,
-                                    period: e.target.period.value,
-                                    role: e.target.role.value,
-                                    activities: e.target.activities.value.split(','),
-                                    stacks: e.target.stacks.value.split(',')
-                                }
-                                handleSave(newExperience)
-                            }}>
-                                <div className="flex flex-col gap-4">
-                                    <input type="text" name="company" placeholder="Organização" defaultValue={selectedExperience?.company || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
-                                    <input type="text" name="period" placeholder="Tempo" defaultValue={selectedExperience?.period || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
-                                    <input type="text" name="role" placeholder="Função" defaultValue={selectedExperience?.role || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
-                                    <textarea name="activities" placeholder="Atividades (separadas por vírgula)" defaultValue={selectedExperience?.activities.join(', ') || ''} className="p-2 rounded bg-slate-800 text-gray-100"></textarea>
-                                    <input type="text" name="stacks" placeholder="Stacks (separadas por vírgula)" defaultValue={selectedExperience?.stacks.join(', ') || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
-                                    <Button type="submit" className="bg-[#00BFFF] text-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]">
-                                        Salvar
-                                    </Button>
-                                </div>
-                            </form>
+                            <FormExperience selectedExperience={selectedExperience} handleSave={handleSave} />
                         </DialogDescription>
                     </div>
                 </DialogContent>

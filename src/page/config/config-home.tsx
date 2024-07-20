@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { FormConfigHome } from "@/form/form-home"
+import { FormHome } from "@/form/form-home"
 import { useRef, useState } from "react"
 import { FaCamera } from "react-icons/fa"
 
@@ -48,7 +48,7 @@ export default function ConfigHome() {
                     </Button>
                 </div>
                 <div className="flex flex-col gap-[10px]">
-                    <FormConfigHome />
+                    <FormHome />
                 </div>
             </div>
         </div>

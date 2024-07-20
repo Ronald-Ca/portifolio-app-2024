@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { FormProvider, useForm } from "react-hook-form"
 
-export function FormHome() {
+export function FormAbout() {
     const form = useForm()
     const onSubmit = (data: any) => {
         console.log(data)
@@ -14,36 +14,36 @@ export function FormHome() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center gap-[10px]">
                 <FormField
                     control={form.control}
-                    name="title"
+                    name="iam"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-gray-50">Título:</FormLabel>
+                            <FormLabel className="text-gray-50">Eu:</FormLabel>
                             <FormControl>
-                                <Input {...field} placeholder="Título" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
+                                <Input {...field} placeholder="Quem sou eu?" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
                             </FormControl>
                         </FormItem>
                     )}
                 />
                 <FormField
                     control={form.control}
-                    name="role"
+                    name="address"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-gray-50">Cargo:</FormLabel>
+                            <FormLabel className="text-gray-50">Endereço:</FormLabel>
                             <FormControl>
-                                <Input {...field} placeholder="Cargo" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
+                                <Input {...field} placeholder="Qual seu endereço?" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
                             </FormControl>
                         </FormItem>
                     )}
                 />
                 <FormField
                     control={form.control}
-                    name="description"
+                    name="formation"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-gray-50">Descrição:</FormLabel>
+                            <FormLabel className="text-gray-50">Formação:</FormLabel>
                             <FormControl>
-                                <Textarea {...field} placeholder="Descrição" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
+                                <Textarea {...field} placeholder="Qual sua formação?" className="border-[1px] border-gray-50 w-[500px] h-[200px] bg-slate-950 text-gray-50" />
                             </FormControl>
                         </FormItem>
                     )}

@@ -1,11 +1,8 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { DialogHeader } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { FormProject } from "@/form/form-project"
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog"
-import { Label } from "@radix-ui/react-label"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { FaEdit } from "react-icons/fa"
 import { IoIosAdd, IoIosClose } from "react-icons/io"
 
@@ -31,48 +28,21 @@ const projects: Project[] = [
 
 export default function ConfigProject() {
     const [isOpen, setIsOpen] = useState(false)
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-    const [imagePreview, setImagePreview] = useState<string | null>(null)
-    const [videoPreview, setVideoPreview] = useState<string | null>(null)
-    const fileInputRef = useRef<HTMLInputElement>(null)
-    const videoInputRef = useRef<HTMLInputElement>(null)
+    const [selectedProject, setSelectedProject] = useState<Project | undefined>(undefined)
 
     const handleEditClick = (project: Project) => {
         setSelectedProject(project)
-        setImagePreview(project.previewImage)
-        setVideoPreview(project.video)
         setIsOpen(true)
     }
 
     const handleAddClick = () => {
-        setSelectedProject(null)
-        setImagePreview(null)
-        setVideoPreview(null)
+        setSelectedProject(undefined)
         setIsOpen(true)
     }
 
-    const handleImageChange = (event: any) => {
-        const file = event.target.files[0]
-        if (file) {
-            const imageURL = URL.createObjectURL(file)
-            setImagePreview(imageURL)
-        }
-    }
-
-    const handleCameraClick = () => {
-        fileInputRef?.current?.click()
-    }
-
-    const handleVideoChange = (event: any) => {
-        const file = event.target.files[0]
-        if (file) {
-            const videoURL = URL.createObjectURL(file)
-            setVideoPreview(videoURL)
-        }
-    }
-
-    const handleCameraClickVideo = () => {
-        videoInputRef?.current?.click()
+    const handleSave = (newProject: Project) => {
+        console.log(newProject)
+        setIsOpen(false)
     }
 
     return (
@@ -103,63 +73,7 @@ export default function ConfigProject() {
                             </DialogTitle>
                         </DialogHeader>
                         <DialogDescription className="max-h-[600px] overflow-y-auto p-[8px]">
-                            <div className="flex flex-col gap-4">
-                                <div className="flex flex-col gap-2">
-                                    <Label className="text-gray-300">Nome</Label>
-                                    <Input type="text" className="bg-slate-800 text-gray-300 p-2 rounded-lg border-[1px] border-[#00BFFF]" defaultValue={selectedProject?.name || ''} />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <Label className="text-gray-300">Descrição</Label>
-                                    <Textarea className="bg-slate-800 text-gray-300 p-2 rounded-lg border-[1px] border-[#00BFFF]" defaultValue={selectedProject?.description || ''} />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <Label className="text-gray-300">Link</Label>
-                                    <Input type="text" className="bg-slate-800 text-gray-300 p-2 rounded-lg border-[1px] border-[#00BFFF]" defaultValue={selectedProject?.link || ''} />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <Label className="text-gray-300">Stacks</Label>
-                                    <Input type="text" className="bg-slate-800 text-gray-300 p-2 rounded-lg border-[1px] border-[#00BFFF]" defaultValue={selectedProject?.stacks?.join(', ') || ''} />
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <Label className="text-gray-300">Imagem</Label>
-                                    <div onClick={handleCameraClick} className="h-[200px] cursor-pointer flex items-center justify-center border-[1px] border-dashed p-[8px] rounded-[10px]">
-                                        {imagePreview ? (
-                                            <img
-                                                src={imagePreview}
-                                                alt="Preview"
-                                                className="w-[100%] h-[100%] object-cover rounded-[10px]"
-                                            />
-                                        ) : (<p className="text-gray-50">Adicione uma imagem para pré-vizualização</p>)}
-                                        <Input
-                                            type="file"
-                                            className="hidden"
-                                            onChange={handleImageChange}
-                                            ref={fileInputRef}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <Label className="text-gray-300">Video</Label>
-                                    <div onClick={handleCameraClickVideo} className="h-[200px] cursor-pointer flex items-center justify-center border-[1px] border-dashed p-[8px] rounded-[10px]">
-                                        {videoPreview ? (
-                                            <video
-                                                src={videoPreview}
-                                                className="w-[100%] h-[100%] object-cover rounded-[10px]"
-                                                controls
-                                            />
-                                        ) : (<p className="text-gray-50">Adicione um vídeo para pré-vizualização</p>)}
-                                        <Input
-                                            type="file"
-                                            className="hidden"
-                                            onChange={handleVideoChange}
-                                            ref={videoInputRef}
-                                        />
-                                    </div>
-                                </div>
-                                <Button type="submit" className="bg-[#00BFFF] text-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]">
-                                    Salvar
-                                </Button>
-                            </div>
+                            <FormProject selectedProject={selectedProject} handleSave={handleSave} />
                         </DialogDescription>
                     </div>
                 </DialogContent>
