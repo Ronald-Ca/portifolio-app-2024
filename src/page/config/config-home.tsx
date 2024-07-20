@@ -1,17 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useRef, useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { FaCamera } from "react-icons/fa";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { FormConfigHome } from "@/form/form-home"
+import { useRef, useState } from "react"
+import { FaCamera } from "react-icons/fa"
 
 export default function ConfigHome() {
     const [imagePreview, setImagePreview] = useState('https://avatars.githubusercontent.com/u/104284345?v=4')
     const fileInputRef = useRef<HTMLInputElement>(null)
 
-    const handleImageChange = (event: any) => {
-        const file = event.target.files[0]
+    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
         if (file) {
             const imageURL = URL.createObjectURL(file)
             setImagePreview(imageURL)
@@ -20,56 +18,6 @@ export default function ConfigHome() {
 
     const handleCameraClick = () => {
         fileInputRef?.current?.click()
-    }
-    function handleSubmit() {
-        const form = useForm()
-        const onSubmit = (data: any) => {
-            console.log(data)
-        }
-
-        return (
-            <FormProvider {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col items-center gap-[10px]'>
-                    <FormField
-                        control={form.control}
-                        name="title"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='text-gray-50'>Título:</FormLabel>
-                                <FormControl>
-                                    <Input {...field} placeholder="Título" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="role"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='text-gray-50'>Cargo:</FormLabel>
-                                <FormControl>
-                                    <Input {...field} placeholder="Cargo" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="description"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className='text-gray-50'>Descrição:</FormLabel>
-                                <FormControl>
-                                    <Textarea {...field} placeholder="Descrição" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-
-                </form>
-            </FormProvider>
-        )
     }
 
     return (
@@ -100,7 +48,7 @@ export default function ConfigHome() {
                     </Button>
                 </div>
                 <div className="flex flex-col gap-[10px]">
-                    {handleSubmit()}
+                    <FormConfigHome />
                 </div>
             </div>
         </div>

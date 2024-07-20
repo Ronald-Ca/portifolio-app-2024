@@ -1,11 +1,12 @@
-import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Card, CardTitle } from "@/components/ui/card"
 import { DialogHeader } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog"
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group"
 import { useState } from "react"
-import { FaEdit, FaStar } from "react-icons/fa"
+import { FaEdit } from "react-icons/fa"
 import { IoIosAdd, IoIosClose } from "react-icons/io"
 
 interface Skill {
@@ -14,38 +15,45 @@ interface Skill {
     icon: string
     experience: number
     color: string
-    tipo: 'skill' | 'competence'
+    type: 'skill' | 'competence'
 }
 
 const skills: Skill[] = [
-    { name: "HTML", icon: "FaHtml5", color: "text-[#FF4500]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "CSS", icon: "FaCss3Alt", color: "text-[#00BFFF]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "JavaScript", icon: "IoLogoJavascript", color: "text-[#FFFF00]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "TypeScript", icon: "SiTypescript", color: "text-[#007ACC]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "NodeJS", icon: "FaNodeJs", color: "text-[#68A063]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "MongoDB", icon: "DiMongodb", color: "text-[#4DB33D]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "SQL", icon: "BsFiletypeSql", color: "text-[#FFD700]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "Docker", icon: "FaDocker", color: "text-[#0DB7ED]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "Git", icon: "FaGitAlt", color: "text-[#F05032]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "Github", icon: "FaGithub", color: "text-[#171515]", level: 3, experience: 3, tipo: 'skill' },
-    { name: "Comunicação", icon: "RiSpeakLine", color: "text-[#00BFFF]", level: 3, experience: 3, tipo: 'competence' },
-    { name: "Trabalho em equipe", icon: "MdGroups2", color: "text-[#00BFFF]", level: 3, experience: 3, tipo: 'competence' },
-    { name: "Foco", icon: "RiFocus3Fill", color: "text-[#00BFFF]", level: 3, experience: 3, tipo: 'competence' },
-    { name: "Persistência", icon: "SiPersistent", color: "text-[#00BFFF]", level: 3, experience: 3, tipo: 'competence' },
+    { name: "HTML", icon: "FaHtml5", color: "text-[#FF4500]", level: 3, experience: 3, type: 'skill' },
+    { name: "CSS", icon: "FaCss3Alt", color: "text-[#00BFFF]", level: 3, experience: 3, type: 'skill' },
+    { name: "JavaScript", icon: "IoLogoJavascript", color: "text-[#FFFF00]", level: 3, experience: 3, type: 'skill' },
+    { name: "TypeScript", icon: "SiTypescript", color: "text-[#007ACC]", level: 3, experience: 3, type: 'skill' },
+    { name: "NodeJS", icon: "FaNodeJs", color: "text-[#68A063]", level: 3, experience: 3, type: 'skill' },
+    { name: "MongoDB", icon: "DiMongodb", color: "text-[#4DB33D]", level: 3, experience: 3, type: 'skill' },
+    { name: "SQL", icon: "BsFiletypeSql", color: "text-[#FFD700]", level: 3, experience: 3, type: 'skill' },
+    { name: "Docker", icon: "FaDocker", color: "text-[#0DB7ED]", level: 3, experience: 3, type: 'skill' },
+    { name: "Git", icon: "FaGitAlt", color: "text-[#F05032]", level: 3, experience: 3, type: 'skill' },
+    { name: "Github", icon: "FaGithub", color: "text-[#171515]", level: 3, experience: 3, type: 'skill' },
+    { name: "Comunicação", icon: "RiSpeakLine", color: "text-[#00BFFF]", level: 3, experience: 3, type: 'competence' },
+    { name: "Trabalho em equipe", icon: "MdGroups2", color: "text-[#00BFFF]", level: 3, experience: 3, type: 'competence' },
+    { name: "Foco", icon: "RiFocus3Fill", color: "text-[#00BFFF]", level: 3, experience: 3, type: 'competence' },
+    { name: "Persistência", icon: "SiPersistent", color: "text-[#00BFFF]", level: 3, experience: 3, type: 'competence' },
 ]
 
 export default function ConfigSkill() {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
+    const [selectedType, setSelectedType] = useState("skill")
 
     const handleEditClick = (skill: Skill) => {
         setSelectedSkill(skill)
+        setSelectedType(skill.type)
         setIsOpen(true)
     }
 
     const handleAddClick = () => {
         setSelectedSkill(null)
         setIsOpen(true)
+    }
+
+
+    const handleTypeChange = (value: "skill" | "competence") => {
+        setSelectedType(value)
     }
 
     return (
@@ -57,14 +65,6 @@ export default function ConfigSkill() {
                             className="text-[30px] text-slate-950 absolute top-[-5px] right-[-5px] bg-[#00BFFF] p-[3px] rounded-[3px]"
                         />
                         <CardTitle className="text-gray-300 text-2xl font-semibold mb-4">{skill.name}</CardTitle>
-                        <CardContent className="flex justify-center">
-                            {Array(skill.level).fill(0).map((_, i) => (
-                                <FaStar key={i} className="text-[#00BFFF] mr-1" />
-                            ))}
-                        </CardContent>
-                        <CardDescription className="absolute bottom-0 left-0 right-0 p-2 text-gray-300 text-center">
-                            <span>{skill.experience} anos de experiência</span>
-                        </CardDescription>
                     </Card>
                 ))}
                 <Card onClick={handleAddClick} className="bg-slate-950 w-[200px] h-[200px] border-[2px] rounded-[10px] border-[#00BFFF] p-[20px] flex justify-center items-center relative cursor-pointer transform hover:scale-105 transition-transform duration-300">
@@ -106,17 +106,26 @@ export default function ConfigSkill() {
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <Label className="text-gray-300">Tipo</Label>
-                                    <RadioGroup className="flex gap-4">
+                                    <RadioGroup className="flex gap-4" value={selectedType} onValueChange={handleTypeChange}>
                                         <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="skill" className="text-white w-[10px] h-[10px] bg-white border border-white rounded-full" />
+                                            <RadioGroupItem
+                                                value="skill"
+                                                className={`text-white w-[10px] h-[10px] ${selectedType === "skill" ? "bg-blue-500" : "bg-white"} border border-white rounded-full`}
+                                            />
                                             <Label className="text-gray-300">Habilidade</Label>
                                         </div>
                                         <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="competence" className="text-white w-[10px] h-[10px] bg-white border border-white rounded-full" />
+                                            <RadioGroupItem
+                                                value="competence"
+                                                className={`text-white w-[10px] h-[10px] ${selectedType === "competence" ? "bg-blue-500" : "bg-white"} border border-white rounded-full`}
+                                            />
                                             <Label className="text-gray-300">Competência</Label>
                                         </div>
                                     </RadioGroup>
                                 </div>
+                                <Button type="submit" className="bg-[#00BFFF] text-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]">
+                                    Salvar
+                                </Button>
                             </div>
                         </DialogDescription>
                     </div>

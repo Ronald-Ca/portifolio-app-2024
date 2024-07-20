@@ -190,7 +190,9 @@ export default function ConfigAbout() {
                                     <input type="text" name="role" placeholder="Função" defaultValue={selectedExperience?.role || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
                                     <textarea name="activities" placeholder="Atividades (separadas por vírgula)" defaultValue={selectedExperience?.activities.join(', ') || ''} className="p-2 rounded bg-slate-800 text-gray-100"></textarea>
                                     <input type="text" name="stacks" placeholder="Stacks (separadas por vírgula)" defaultValue={selectedExperience?.stacks.join(', ') || ''} className="p-2 rounded bg-slate-800 text-gray-100" />
-                                    <button type="submit" className="bg-[#00BFFF] text-gray-100 p-2 rounded">Salvar</button>
+                                    <Button type="submit" className="bg-[#00BFFF] text-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]">
+                                        Salvar
+                                    </Button>
                                 </div>
                             </form>
                         </DialogDescription>

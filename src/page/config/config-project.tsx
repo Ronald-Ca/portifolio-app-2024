@@ -1,20 +1,21 @@
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { DialogHeader } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
-import { Label } from "@radix-ui/react-label";
-import { useRef, useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { IoIosAdd, IoIosClose } from "react-icons/io";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { DialogHeader } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog"
+import { Label } from "@radix-ui/react-label"
+import { useRef, useState } from "react"
+import { FaEdit } from "react-icons/fa"
+import { IoIosAdd, IoIosClose } from "react-icons/io"
 
 interface Project {
-    name: string;
-    previewImage: string;
-    video: string;
-    description: string;
-    link: string;
-    stacks?: string[];
+    name: string
+    previewImage: string
+    video: string
+    description: string
+    link: string
+    stacks?: string[]
 }
 
 const projects: Project[] = [
@@ -92,7 +93,7 @@ export default function ConfigProject() {
             </div>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogContent className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-slate-900 rounded-lg p-6 min-w-[500px] max-h-[700px] relative border-[2px] border-[#00BFFF]" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-slate-900 rounded-lg p-6 min-w-[500px] max-h-[800px] relative border-[2px] border-[#00BFFF]" onClick={(e) => e.stopPropagation()}>
                         <DialogClose asChild>
                             <IoIosClose size={35} className="text-[#00BFFF] absolute top-0 right-0 cursor-pointer" onClick={() => setIsOpen(false)} />
                         </DialogClose>
@@ -101,7 +102,7 @@ export default function ConfigProject() {
                                 {selectedProject ? 'Editar Projeto' : 'Adicionar Projeto'}
                             </DialogTitle>
                         </DialogHeader>
-                        <DialogDescription className="max-h-[400px] overflow-y-auto p-[8px]">
+                        <DialogDescription className="max-h-[600px] overflow-y-auto p-[8px]">
                             <div className="flex flex-col gap-4">
                                 <div className="flex flex-col gap-2">
                                     <Label className="text-gray-300">Nome</Label>
@@ -155,6 +156,9 @@ export default function ConfigProject() {
                                         />
                                     </div>
                                 </div>
+                                <Button type="submit" className="bg-[#00BFFF] text-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]">
+                                    Salvar
+                                </Button>
                             </div>
                         </DialogDescription>
                     </div>
