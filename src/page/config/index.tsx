@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { FaAddressCard, FaEdit, FaGamepad, FaHouseUser } from "react-icons/fa";
+import { FaAddressCard, FaEdit, FaGamepad, FaHouseUser, FaStackOverflow } from "react-icons/fa";
 import { ImExit } from "react-icons/im";
 import { PiProjectorScreenChartFill } from "react-icons/pi";
 import ConfigHome from "./config-home";
@@ -9,26 +9,29 @@ import ConfigProject from "./config-project";
 import { useState } from "react";
 import ConfigSocialMedia from "./config-social-media";
 import { IoShareSocial } from "react-icons/io5";
+import ConfigStack from "./config-stack";
 
 export default function Config() {
-    const [activeComponent, setActiveComponent] = useState<'home' | 'about' | 'skills' | 'projects' | 'social-media'>('home');
+    const [activeComponent, setActiveComponent] = useState<'home' | 'about' | 'skills' | 'projects' | 'social-media' | 'stack'>('home');
 
     const renderComponent = () => {
         switch (activeComponent) {
             case 'home':
-                return <ConfigHome />;
+                return <ConfigHome />
             case 'about':
-                return <ConfigAbout />;
+                return <ConfigAbout />
             case 'skills':
-                return <ConfigSkill />;
+                return <ConfigSkill />
             case 'projects':
-                return <ConfigProject />;
+                return <ConfigProject />
             case 'social-media':
-                return <ConfigSocialMedia />;
+                return <ConfigSocialMedia />
+            case 'stack':
+                return <ConfigStack />
             default:
-                return <ConfigHome />;
+                return <ConfigHome />
         }
-    };
+    }
 
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-r from-slate-950 via-slate-900 to-gray-950 animate-gradient-move">
@@ -82,6 +85,13 @@ export default function Config() {
                             <IoShareSocial color="#00BFFF" />
                             Redes Sociais
                         </li>
+                        <li
+                            onClick={() => setActiveComponent('stack')}
+                            className="flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]"
+                        >
+                            <FaStackOverflow color="#00BFFF" />
+                            Stacks
+                        </li>
                     </ul>
                 </menu>
                 <div className="flex-1 p-[20px]">
@@ -89,5 +99,5 @@ export default function Config() {
                 </div>
             </main>
         </div>
-    );
+    )
 }
