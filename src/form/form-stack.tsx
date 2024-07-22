@@ -39,7 +39,7 @@ export default function FormStack({ selectedStack, handleSave }: StackFormProps)
                             <FormControl>
                                 <Input
                                     {...field}
-                                    placeholder="Nome da rede social"
+                                    placeholder="Nome da stack"
                                     className="bg-slate-800 text-gray-300 p-2 rounded-lg border-[1px] border-[#00BFFF]"
                                 />
                             </FormControl>
@@ -55,7 +55,7 @@ export default function FormStack({ selectedStack, handleSave }: StackFormProps)
                             <FormControl>
                                 <Input
                                     {...field}
-                                    placeholder="Nome do ícone da rede"
+                                    placeholder="ícone stack"
                                     className="bg-slate-800 text-gray-300 p-2 rounded-lg border-[1px] border-[#00BFFF]"
                                 />
                             </FormControl>

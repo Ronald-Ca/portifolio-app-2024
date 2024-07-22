@@ -10,9 +10,11 @@ import { useState } from "react";
 import ConfigSocialMedia from "./config-social-media";
 import { IoShareSocial } from "react-icons/io5";
 import ConfigStack from "./config-stack";
+import ConfigExperience from "./config-experience";
+import { SiLevelsdotfyi } from "react-icons/si";
 
 export default function Config() {
-    const [activeComponent, setActiveComponent] = useState<'home' | 'about' | 'skills' | 'projects' | 'social-media' | 'stack'>('home');
+    const [activeComponent, setActiveComponent] = useState<'home' | 'about' | 'skills' | 'projects' | 'social-media' | 'stack' | 'experience'>('home');
 
     const renderComponent = () => {
         switch (activeComponent) {
@@ -28,6 +30,8 @@ export default function Config() {
                 return <ConfigSocialMedia />
             case 'stack':
                 return <ConfigStack />
+            case 'experience':
+                return <ConfigExperience />
             default:
                 return <ConfigHome />
         }
@@ -63,6 +67,13 @@ export default function Config() {
                         >
                             <FaAddressCard color="#00BFFF" />
                             Sobre
+                        </li>
+                        <li
+                            onClick={() => setActiveComponent('experience')}
+                            className="flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]"
+                        >
+                            <SiLevelsdotfyi color="#00BFFF" />
+                            Experiência
                         </li>
                         <li
                             onClick={() => setActiveComponent('skills')}

@@ -14,23 +14,23 @@ interface Stack {
 
 const stacks: Stack[] = [
     {
-        name: "Github",
-        icon: "github",
+        name: "HTML",
+        icon: "html",
         color: "#181717"
     },
     {
-        name: "Linkedin",
-        icon: "linkedin",
+        name: "CSS",
+        icon: "css",
         color: "#0077B5"
     },
     {
-        name: "Instagram",
-        icon: "instagram",
+        name: "Javascript",
+        icon: "javascript",
         color: "#E4405F"
     },
     {
-        name: "Twitter",
-        icon: "twitter",
+        name: "TypeScript",
+        icon: "typescript",
         color: "#1DA1F2"
     },
 ]
