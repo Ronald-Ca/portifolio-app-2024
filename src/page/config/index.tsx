@@ -7,9 +7,11 @@ import ConfigAbout from "./config-about";
 import ConfigSkill from "./config-skill";
 import ConfigProject from "./config-project";
 import { useState } from "react";
+import ConfigSocialMedia from "./config-social-media";
+import { IoShareSocial } from "react-icons/io5";
 
 export default function Config() {
-    const [activeComponent, setActiveComponent] = useState<'home' | 'about' | 'skills' | 'projects'>('home');
+    const [activeComponent, setActiveComponent] = useState<'home' | 'about' | 'skills' | 'projects' | 'social-media'>('home');
 
     const renderComponent = () => {
         switch (activeComponent) {
@@ -21,6 +23,8 @@ export default function Config() {
                 return <ConfigSkill />;
             case 'projects':
                 return <ConfigProject />;
+            case 'social-media':
+                return <ConfigSocialMedia />;
             default:
                 return <ConfigHome />;
         }
@@ -70,6 +74,13 @@ export default function Config() {
                         >
                             <PiProjectorScreenChartFill color="#00BFFF" />
                             Projetos
+                        </li>
+                        <li
+                            onClick={() => setActiveComponent('social-media')}
+                            className="flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]"
+                        >
+                            <IoShareSocial color="#00BFFF" />
+                            Redes Sociais
                         </li>
                     </ul>
                 </menu>
