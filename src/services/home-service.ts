@@ -3,7 +3,7 @@ import BaseService, { DefaultReturnType } from "./base-service";
 
 export default class HomeService extends BaseService {
     constructor() {
-        super('/home')
+        super('home')
     }
 
     async getHome(): Promise<HomeType> {
