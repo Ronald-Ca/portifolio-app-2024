@@ -84,7 +84,7 @@ export default function ConfigSkill() {
                             <IoIosClose size={35} className="text-[#00BFFF] absolute top-0 right-0 cursor-pointer" onClick={() => setIsOpen(false)} />
                         </DialogClose>
                         <DialogHeader>
-                            <DialogTitle className="text-gray-100 text-center font-semibold text-[30px]">
+                            <DialogTitle className="text-gray-100 text-center font-semibold text-[30px]">z
                                 {selectedSkill ? "Editar Habilidade" : "Adicionar Habilidade"}
                             </DialogTitle>
                         </DialogHeader>

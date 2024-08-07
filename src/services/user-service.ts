@@ -1,12 +1,12 @@
 import api from "@/utils/api"
-import BaseService from "./base-service"
+import BaseService, { DefaultReturnType } from "./base-service"
 
 export default class UserService extends BaseService {
     constructor() {
         super('user')
     }
 
-    async authenticate(data: UserLoginType): Promise<UserLoginResponseType> {
+    async authenticate(data: UserLoginType): Promise<DefaultReturnType<UserLoginResponseType>> {
         const response = await api.post('/user/authenticate', data)
         return response.data
     }
@@ -17,13 +17,13 @@ export default class UserService extends BaseService {
     }
 }
 
-interface UserLoginType {
+export interface UserLoginType {
     email: string
     password: string
     token?: string
 }
 
-interface UserLoginResponseType {
+export interface UserLoginResponseType {
     token: string
     user: UserLoginType
 }

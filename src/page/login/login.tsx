@@ -1,19 +1,33 @@
+import CustomAlert from "@/components/common/Alert";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useAuthenticateMutation } from "@/queries/user";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
+type AlertType = 'success' | 'error'
 
 function LoginForm() {
     const form = useForm()
+    const [alert, setAlert] = useState<{ title: string; message: string; type: AlertType } | null>(null)
+    const loginMutation = useAuthenticateMutation({
+        onSuccess: (data) => {
+            localStorage.setItem('auth', JSON.stringify({ token: data.data.token }))
+        },
+        onError: () => {
+            setAlert({ title: 'Erro ao logar!', message: 'Usuário ou senha incorreta!', type: 'error' })
+        }
+    })
 
-    const onSubmit = (data: any) => {
-        console.log(data)
+    const onSubmit = async (data: any) => {
+        loginMutation.mutate(data)
     }
 
     return (
         <FormProvider {...form}>
+            {alert && <CustomAlert {...alert} />}
             <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col items-center gap-[10px]'>
                 <FormField
                     control={form.control}
@@ -39,6 +53,9 @@ function LoginForm() {
                         </FormItem>
                     )}
                 />
+                <Button type="submit" className="bg-slate-950 w-[200px] mt-[30px] hover:bg-[#00BFFF] hover:text-slate-900 flex gap-[5px] font-semibold text-[15px]">
+                    Entrar
+                </Button>
             </form>
         </FormProvider>
     )
@@ -53,11 +70,6 @@ export default function Login() {
                     <img src="src/assets/icon.png" width={50} height={50} className=" rounded-[10px] mb-[10px]" />
                 </a>
                 <LoginForm />
-                <a href="/config">
-                    <Button className="bg-slate-950 w-[200px] mt-[30px] hover:bg-[#00BFFF] hover:text-slate-900 flex gap-[5px] font-semibold text-[15px]">
-                        Entrar
-                    </Button>
-                </a>
             </Card>
         </div>
     )
