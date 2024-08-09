@@ -1,20 +1,22 @@
-import CustomAlert from "@/components/common/Alert";
+import { useAlert } from "@/components/common/alert/index";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useAuthenticateMutation } from "@/queries/user";
-import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-
-type AlertType = 'success' | 'error'
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     const form = useForm()
-    const [alert, setAlert] = useState<{ title: string; message: string; type: AlertType } | null>(null)
+
+    const { setAlert } = useAlert()
+    const navigate = useNavigate()
     const loginMutation = useAuthenticateMutation({
         onSuccess: (data) => {
-            localStorage.setItem('auth', JSON.stringify({ token: data.data.token }))
+            setAlert({ title: 'Sucesso!', message: 'Login realizado com sucesso!', type: 'success' })
+            localStorage.setItem('auth', JSON.stringify({ token: data.data.token }));
+            navigate('/config')
         },
         onError: () => {
             setAlert({ title: 'Erro ao logar!', message: 'Usuário ou senha incorreta!', type: 'error' })
@@ -27,7 +29,6 @@ function LoginForm() {
 
     return (
         <FormProvider {...form}>
-            {alert && <CustomAlert {...alert} />}
             <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col items-center gap-[10px]'>
                 <FormField
                     control={form.control}
@@ -59,7 +60,6 @@ function LoginForm() {
             </form>
         </FormProvider>
     )
-
 }
 
 export default function Login() {
