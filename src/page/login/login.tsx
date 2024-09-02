@@ -22,7 +22,7 @@ function LoginForm() {
             setAlert({ title: 'Erro ao logar!', message: 'Usuário ou senha incorreta!', type: 'error' })
         }
     })
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onSubmit = async (data: any) => {
         loginMutation.mutate(data)
     }

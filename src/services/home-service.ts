@@ -2,29 +2,46 @@ import api from "@/utils/api";
 import BaseService, { DefaultReturnType } from "./base-service";
 
 export default class HomeService extends BaseService {
-    constructor() {
-        super('home')
-    }
+	constructor() {
+		super('home')
+	}
 
-    async getHome(): Promise<HomeType> {
-        const response = await api.get('/home/get')
-        return response.data
-    }
+	async getHome(): Promise<HomeType> {
+		const response = await api.get('/home/get')
+		return response.data.data
+	}
 
-    async createHome(data: HomeType): Promise<DefaultReturnType<HomeType>> {
-        const response = await api.post('/home/create', { data }, this.getToken())
-        return response.data
-    }
+	async createHome(data: HomeType): Promise<DefaultReturnType<HomeType>> {
+		const formData = new FormData()
+		formData.append('title', data.title)
+		formData.append('role', data.role)
+		formData.append('description', data.description)
+		if (data.image) {
+			formData.append('image', data.image);
+		}
 
-    async updateHome(data: HomeType): Promise<DefaultReturnType<HomeType>> {
-        const response = await api.post('/home/create', { data }, this.getToken())
-        return response.data
-    }
+		const response = await api.post('/home/create', formData, this.getToken())
+		return response.data
+	}
+
+	async updateHome(data: HomeType): Promise<DefaultReturnType<HomeType>> {
+		const formData = new FormData()
+		formData.append('title', data.title)
+		formData.append('role', data.role)
+		formData.append('description', data.description)
+		if (data.image) {
+			formData.append('image', data.image);
+		}
+
+		const response = await api.put(`/home/update/${data.id}`, formData, this.getToken())
+		return response.data
+	}
 }
 
 export type HomeType = {
-    title: string
-    role: string
-    description: string
-    image: string
+	id?: string
+	image: File | null
+	title: string
+	role: string
+	description: string
 }
