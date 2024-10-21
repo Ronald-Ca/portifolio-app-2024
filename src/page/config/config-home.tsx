@@ -60,7 +60,7 @@ export default function ConfigHome() {
 
 	const onSubmit = (data: HomeType) => {
 		if (home) {
-			const newData = { ...data, id: home.data.id }
+			const newData = { ...data, id: home.id }
 			updateHome.mutate(newData)
 			return
 		} else {
@@ -70,15 +70,17 @@ export default function ConfigHome() {
 
 	useEffect(() => {
 		if (isSuccess && home) {
-			if (home.data.image) {
-				setImagePreview(home.data.image)
+			if (home.image) {
+				if (typeof home.image === 'string') {
+					setImagePreview(home.image)
+				}
 			}
 
 			formMethods.reset({
 				image: null,
-				title: home.data.title,
-				role: home.data.role,
-				description: home.data.description,
+				title: home.title,
+				role: home.role,
+				description: home.description,
 			})
 		}
 	}, [isSuccess, home, formMethods])

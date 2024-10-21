@@ -1,6 +1,8 @@
+import { useAlert } from "@/components/common/alert"
 import { Input } from "@/components/ui/input"
 import { FormAbout } from "@/form/form-about"
-import { useRef, useState } from "react"
+import { useCreateAboutMutation, useGetAboutQuery, useUpdateAboutMutation } from "@/queries/about"
+import { useEffect, useRef, useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { FaCamera } from "react-icons/fa"
 
@@ -12,16 +14,20 @@ interface About {
 }
 
 export default function ConfigAbout() {
+	const { setAlert } = useAlert()
     const [imagePreview, setImagePreview] = useState('https://avatars.githubusercontent.com/u/104284345?v=4')
     const fileInputRef = useRef<HTMLInputElement>(null)
     const [_, setSelectedFile] = useState<File | null>(null)
 
+	const { data: about, isSuccess } = useGetAboutQuery()
+	console.log('res', about)
+
     const formMethods = useForm<About>({
         defaultValues: {
             image: null,
-            person: 'Nome Completo',
-            address: 'Endereço',
-            education: 'Nível de Ensino'
+            person: '',
+            address: '',
+            education: ''
         }
     })
 
@@ -39,25 +45,52 @@ export default function ConfigAbout() {
         fileInputRef.current?.click()
     }
 
-    const onSubmit = (data: About) => {
-        const formData = new FormData()
-        formData.append('image', data.image!)
-        formData.append('person', data.person)
-        formData.append('address', data.address)
-        formData.append('education', data.education)
+	const createAbout = useCreateAboutMutation({
+		onSuccess: () => {
+			setAlert({ title: 'Sucesso!', message: 'Dados da About Page criados com sucesso!', type: 'success' })
+		},
+		onError: error => {
+			setAlert({ title: 'Erro ao criar About!', message: 'Erro ao criar os dados da About Page!', type: 'error' })
+			console.error('Erro ao criar a About', error)
+		}
+	})
 
-        // Enviar formData para o backend (Exemplo com fetch)
-        fetch('/api/about', {
-            method: 'POST',
-            body: formData
-        }).then(response => {
-            if (response.ok) {
-                console.log('Formulário enviado com sucesso')
-            } else {
-                console.error('Erro ao enviar o formulário')
-            }
-        })
+	const updateAbout = useUpdateAboutMutation({
+		onSuccess: () => {
+			setAlert({ title: 'Sucesso!', message: 'Dados da Home Page atualizados com sucesso!', type: 'success' })
+		},
+		onError: error => {
+			setAlert({ title: 'Erro ao atualizar Home!', message: 'Erro ao atualizar os dados da Home Page!', type: 'error' })
+			console.error('Erro ao atualizar a Home', error)
+		}
+	})
+
+    const onSubmit = (data: About) => {
+        if (about) {
+			const newData = { ...data, id: about.id }
+			updateAbout.mutate(newData)
+			return
+		} else {
+			createAbout.mutate(data)
+		}
     }
+
+	useEffect(() => {
+		if (isSuccess && about) {
+			if (about.image) {
+				if (typeof about.image === 'string') {
+					setImagePreview(about.image)
+				}
+			}
+
+			formMethods.reset({
+				image: null,
+				person: about.person,
+				address: about.address,
+				education: about.education,
+			})
+		}
+	}, [isSuccess, about, formMethods])
 
     return (
         <FormProvider {...formMethods}>

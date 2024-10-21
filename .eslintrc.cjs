@@ -22,6 +22,7 @@ export default tseslint.config({
 		'eslint-plugin-import-helpers': importHelpers
 	},
 	rules: {
+		// ...reactHooks.configs.recommended.rules,
 		"no-constant-condition": "off",
 		"prettier/prettier": [
 			"error",
