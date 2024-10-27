@@ -3,8 +3,32 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { FaGraduationCap, FaHouseDamage } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
+import { useGetAboutQuery } from "@/queries/about";
+import LoadingSpinner from "@/components/common/loading";
 
 export default function About() {
+	const { data: about } = useGetAboutQuery()
+
+    const aboutInfo = [
+        {
+            title: "Eu",
+            description: about?.person,
+            icon: MdDriveFileRenameOutline,
+        },
+        {
+            title: "Formação",
+            description: about?.education,
+            icon: FaGraduationCap,
+        },
+        {
+            title: "Endereço",
+            description: about?.address,
+            icon: FaHouseDamage,
+        },
+    ]
+
+	if (!about) return <LoadingSpinner />
+
     return (
         <div className="min-h-screen bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 animate-gradient-move flex flex-col p-6">
             <div>
@@ -17,7 +41,7 @@ export default function About() {
                 <div className="flex flex-wrap justify-center items-center gap-[100px] border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
                     <div className="border-4 border-[#00BFFF] p-2 rounded-full shadow-lg">
                         <Avatar className="w-[500px] h-[50px]">
-                            <AvatarImage src="src/assets/goku.jpeg" alt="Foto de perfil" className="rounded-full h-[400px]" />
+                            <AvatarImage src={about.image?.toString()} alt="Foto de perfil" className="rounded-full h-[400px]" />
                         </Avatar>
                     </div>
                     <div className="flex flex-col gap-5 w-full lg:w-1/2">
@@ -68,23 +92,7 @@ export default function About() {
     )
 }
 
-const aboutInfo = [
-    {
-        title: "Eu",
-        description: "Me chamo Ronald Camargo, tenho 23 anos.",
-        icon: MdDriveFileRenameOutline,
-    },
-    {
-        title: "Formação",
-        description: "Sou formado em Engenharia da Computação - Bacharelado pela Universidade Federal de Mato Grosso (2018-2023).",
-        icon: FaGraduationCap,
-    },
-    {
-        title: "Endereço",
-        description: "Resido em Planalto da Serra - MT.",
-        icon: FaHouseDamage,
-    },
-]
+
 
 const experiences = [
     {

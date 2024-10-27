@@ -10,9 +10,7 @@ export default function Body() {
 	const { data: home } = useGetHomeQuery()
 	const navigate = useNavigate()
 
-	if (!home) {
-		return <LoadingSpinner />
-	}
+	if (!home) return <LoadingSpinner />
 
 	return (
 		<div className="relative w-full min-h-full bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${fundo})` }}>
