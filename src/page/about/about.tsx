@@ -1,10 +1,9 @@
-import { IoMdCodeDownload } from "react-icons/io";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { FaGraduationCap, FaHouseDamage } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { useGetAboutQuery } from "@/queries/about";
 import LoadingSpinner from "@/components/common/loading";
+import { ButtonCurriculum } from "@/components/ButtonCurriculum";
 
 export default function About() {
 	const { data: about } = useGetAboutQuery()
@@ -34,9 +33,7 @@ export default function About() {
             <div>
                 <div className="flex justify-between items-center mb-6">
                     <h1 className="w-full text-center text-[50px] font-semibold text-gray-300">Quem sou eu?</h1>
-                    <Button className="w-[200px] hover:bg-[#00BFFF] hover:text-slate-900 flex gap-[5px] font-bold">
-                        DOWNLOAD CV <IoMdCodeDownload size={25} />
-                    </Button>
+                    <ButtonCurriculum />
                 </div>
                 <div className="flex flex-wrap justify-center items-center gap-[100px] border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]">
                     <div className="border-4 border-[#00BFFF] p-2 rounded-full shadow-lg">
