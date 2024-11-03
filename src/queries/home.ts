@@ -1,6 +1,6 @@
-import { DefaultReturnType } from "@/services/base-service";
-import HomeService, { HomeType } from "@/services/home-service";
-import { useMutation, useQuery } from "react-query";
+import { DefaultReturnType } from '@/services/base-service'
+import HomeService, { HomeType } from '@/services/home-service'
+import { useMutation, useQuery } from 'react-query'
 
 const home = new HomeService()
 
@@ -17,14 +17,14 @@ const useGetHomeQuery = () => {
 const useCreateHomeMutation = (options: PropsTypeObject) => {
 	return useMutation(async (data: HomeType) => await home.createHome(data), {
 		onSuccess: options?.onSuccess,
-		onError: options?.onError
+		onError: options?.onError,
 	})
 }
 
 const useUpdateHomeMutation = (options: PropsTypeObject) => {
 	return useMutation(async (data: HomeType) => await home.updateHome(data), {
 		onSuccess: options?.onSuccess,
-		onError: options?.onError
+		onError: options?.onError,
 	})
 }
 

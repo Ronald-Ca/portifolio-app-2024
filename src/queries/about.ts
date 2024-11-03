@@ -1,6 +1,6 @@
-import AboutService, { AboutType } from "@/services/about-service";
-import { DefaultReturnType } from "@/services/base-service";
-import { useMutation, useQuery } from "react-query";
+import AboutService, { AboutType } from '@/services/about-service'
+import { DefaultReturnType } from '@/services/base-service'
+import { useMutation, useQuery } from 'react-query'
 
 const about = new AboutService()
 
@@ -17,14 +17,14 @@ const useGetAboutQuery = () => {
 const useCreateAboutMutation = (options: PropsTypeObject) => {
 	return useMutation(async (data: AboutType) => await about.createAbout(data), {
 		onSuccess: options?.onSuccess,
-		onError: options?.onError
+		onError: options?.onError,
 	})
 }
 
 const useUpdateAboutMutation = (options: PropsTypeObject) => {
 	return useMutation(async (data: AboutType) => await about.updateHome(data), {
 		onSuccess: options?.onSuccess,
-		onError: options?.onError
+		onError: options?.onError,
 	})
 }
 

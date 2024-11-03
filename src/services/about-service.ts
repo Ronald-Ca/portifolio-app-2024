@@ -1,5 +1,5 @@
-import api from "@/utils/api";
-import BaseService, { DefaultReturnType } from "./base-service";
+import api from '@/utils/api'
+import BaseService, { DefaultReturnType } from './base-service'
 
 export default class AboutService extends BaseService {
 	constructor() {
@@ -15,7 +15,7 @@ export default class AboutService extends BaseService {
 		formData.append('education', data.education)
 		formData.append('address', data.address)
 		if (data.image) {
-			formData.append('image', data.image);
+			formData.append('image', data.image)
 		}
 
 		const response = await api.post('/about/create', formData, this.getToken())
@@ -28,7 +28,7 @@ export default class AboutService extends BaseService {
 		formData.append('education', data.education)
 		formData.append('address', data.address)
 		if (data.image) {
-			formData.append('image', data.image);
+			formData.append('image', data.image)
 		}
 
 		const response = await api.put(`/about/update/${data.id}`, formData, this.getToken())

@@ -1,5 +1,5 @@
-import api from "@/utils/api";
-import BaseService, { DefaultReturnType } from "./base-service";
+import api from '@/utils/api'
+import BaseService, { DefaultReturnType } from './base-service'
 
 export default class HomeService extends BaseService {
 	constructor() {
@@ -17,7 +17,7 @@ export default class HomeService extends BaseService {
 		formData.append('role', data.role)
 		formData.append('description', data.description)
 		if (data.image) {
-			formData.append('image', data.image);
+			formData.append('image', data.image)
 		}
 
 		const response = await api.post('/home/create', formData, this.getToken())
@@ -30,7 +30,7 @@ export default class HomeService extends BaseService {
 		formData.append('role', data.role)
 		formData.append('description', data.description)
 		if (data.image) {
-			formData.append('image', data.image);
+			formData.append('image', data.image)
 		}
 
 		const response = await api.put(`/home/update/${data.id}`, formData, this.getToken())
