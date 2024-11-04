@@ -4,9 +4,11 @@ import { Avatar, AvatarImage } from '@radix-ui/react-avatar'
 import { useGetAboutQuery } from '@/queries/about'
 import LoadingSpinner from '@/components/common/loading'
 import { ButtonCurriculum } from '@/components/ButtonCurriculum'
+import { useGetCurriculumQuery } from '@/queries/curriculum'
 
 export default function About() {
 	const { data: about } = useGetAboutQuery()
+	const { data: curriculum } = useGetCurriculumQuery()
 
 	const aboutInfo = [
 		{
@@ -33,7 +35,7 @@ export default function About() {
 			<div>
 				<div className='flex justify-between items-center mb-6'>
 					<h1 className='w-full text-center text-[50px] font-semibold text-gray-300'>Quem sou eu?</h1>
-					<ButtonCurriculum />
+					<ButtonCurriculum id={curriculum?.id} />
 				</div>
 				<div className='flex flex-wrap justify-center items-center gap-[100px] border-[1px] rounded-[10px] border-[#00BFFF] p-[50px]'>
 					<div className='border-4 border-[#00BFFF] p-2 rounded-full shadow-lg'>

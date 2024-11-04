@@ -11,7 +11,7 @@ type PropsTypeObject = {
 }
 
 const useGetCurriculumQuery = () => {
-	return useQuery(['get-home'], () => about.getCurriculum())
+	return useQuery(['get-curriculum'], () => about.getCurriculum())
 }
 
 const useCreateCurriculumMutation = (options: PropsTypeObject) => {

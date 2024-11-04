@@ -32,8 +32,7 @@ export default class CurriculumService extends BaseService {
 
 	async downloadCurriculum(id: string): Promise<string> {
 		const response = await api.get(`/curriculum/download/${id}`)
-		const secureUrl = response.data.data.secure_url
-		return secureUrl
+		return response.data.data.download_url
 	}
 }
 

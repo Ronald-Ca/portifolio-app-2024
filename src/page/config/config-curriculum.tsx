@@ -3,14 +3,11 @@ import { Button } from '@/components/ui/button'
 import { TiUploadOutline } from 'react-icons/ti'
 import { useCreateCurriculumMutation, useGetCurriculumQuery } from '@/queries/curriculum'
 import { useAlert } from '@/components/common/alert'
-import CurriculumService from '@/services/curriculum-service'
 
 export default function ConfigCurriculum() {
 	const { setAlert } = useAlert()
-	const curriculumService = new CurriculumService()
 	const [file, setFile] = useState<File | null>(null)
 	const [fileName, setFileName] = useState<string | null>(null)
-	const [curriculumBlobUrl, setCurriculumBlobUrl] = useState<string | null>(null)
 	const [localPreviewUrl, setLocalPreviewUrl] = useState<string | null>(null)
 	const fileInputRef = useRef<HTMLInputElement | null>(null)
 
@@ -43,17 +40,9 @@ export default function ConfigCurriculum() {
 		},
 	})
 
-	const downloadCurriculum = async () => {
-		if (curriculum?.id) {
-			const url = await curriculumService.downloadCurriculum(curriculum.id)
-			setCurriculumBlobUrl(url)
-		}
-	}
-
 	useEffect(() => {
 		if (curriculum?.curriculum) {
 			setFileName(curriculum.fileName as string)
-			downloadCurriculum()
 		}
 	}, [curriculum])
 
@@ -79,28 +68,14 @@ export default function ConfigCurriculum() {
 				{fileName && <span className='text-slate-400'>{fileName}</span>}
 			</div>
 
-			{(localPreviewUrl || curriculumBlobUrl) && (
+			{localPreviewUrl && (
 				<div className='w-full max-w-[500px] h-[600px] mt-4'>
 					<iframe
-						src={localPreviewUrl || curriculumBlobUrl || undefined}
+						src={localPreviewUrl || undefined}
 						className='w-full h-full border border-slate-400'
 						title='Pré-visualização do Currículo'
 					></iframe>
 				</div>
-			)}
-
-			{curriculumBlobUrl && (
-				<Button
-					onClick={() => {
-						const link = document.createElement('a')
-						link.href = curriculumBlobUrl
-						link.download = 'curriculum.pdf'
-						link.click()
-					}}
-					className='bg-[#00BFFF] text-slate-950 mt-4'
-				>
-					Baixar Currículo
-				</Button>
 			)}
 		</div>
 	)
