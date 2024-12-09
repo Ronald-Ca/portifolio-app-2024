@@ -8,15 +8,15 @@ import Projects from '@/page/projects/projects'
 import Contact from '@/page/contact/contact'
 
 export default function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/config" element={<Config />} />
-        </Routes>
-    )
+	return (
+		<Routes>
+			<Route path='/' element={<HomePage />} />
+			<Route path='/about' element={<About />} />
+			<Route path='/skills' element={<Skills />} />
+			<Route path='/projects' element={<Projects />} />
+			<Route path='/contact' element={<Contact />} />
+			<Route path='/login' element={<Login />} />
+			<Route path='/config' element={<Config />} />
+		</Routes>
+	)
 }
