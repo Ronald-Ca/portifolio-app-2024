@@ -21,7 +21,7 @@ export default function Skills() {
 				const skillsWithIcons = await Promise.all(
 					skill.map(async (skill) => {
 						const iconName = skill.icon.trim()
-						const icon = await loadIcon(iconName, skill.color)
+						const icon = await loadIcon(iconName, skill.color || '#00BFFF')
 						return { ...skill, stars: skill.level, icon, iconName: skill.icon }
 					}),
 				)
