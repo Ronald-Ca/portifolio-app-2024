@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useFormContext } from "react-hook-form"
+import { Button } from '@/components/ui/button'
+import { FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { useFormContext } from 'react-hook-form'
 
 interface HomeData {
 	image: File | null
@@ -19,44 +19,51 @@ export function FormHome({ onSubmit }: FormHomeProps) {
 	const form = useFormContext<HomeData>()
 
 	return (
-		<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center gap-[10px]">
+		<form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col items-center gap-[10px]'>
 			<FormField
 				control={form.control}
-				name="title"
+				name='title'
 				render={({ field }) => (
 					<FormItem>
-						<FormLabel className="text-gray-50">Título:</FormLabel>
+						<FormLabel className='text-gray-50'>Título:</FormLabel>
 						<FormControl>
-							<Input {...field} placeholder="Título" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
+							<Input {...field} placeholder='Título' className='border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50' />
 						</FormControl>
 					</FormItem>
 				)}
 			/>
 			<FormField
 				control={form.control}
-				name="role"
+				name='role'
 				render={({ field }) => (
 					<FormItem>
-						<FormLabel className="text-gray-50">Cargo:</FormLabel>
+						<FormLabel className='text-gray-50'>Cargo:</FormLabel>
 						<FormControl>
-							<Input {...field} placeholder="Cargo" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
+							<Input {...field} placeholder='Cargo' className='border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50' />
 						</FormControl>
 					</FormItem>
 				)}
 			/>
 			<FormField
 				control={form.control}
-				name="description"
+				name='description'
 				render={({ field }) => (
 					<FormItem>
-						<FormLabel className="text-gray-50">Descrição:</FormLabel>
+						<FormLabel className='text-gray-50'>Descrição:</FormLabel>
 						<FormControl>
-							<Textarea {...field} placeholder="Descrição" className="border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50" />
+							<Textarea
+								{...field}
+								placeholder='Descrição'
+								className='border-[1px] border-gray-50 w-[500px] bg-slate-950 text-gray-50'
+							/>
 						</FormControl>
 					</FormItem>
 				)}
 			/>
-			<Button type="submit" className="bg-[#00BFFF] text-slate-950 border-[1px] border-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]">
+			<Button
+				type='submit'
+				className='bg-[#00BFFF] text-slate-950 border-[1px] border-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]'
+			>
 				Salvar
 			</Button>
 		</form>

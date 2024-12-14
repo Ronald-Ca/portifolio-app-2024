@@ -19,23 +19,6 @@ interface Skill {
 	type: 'skill' | 'competence'
 }
 
-// const skills: Skill[] = [
-// 	{ name: 'HTML', icon: 'FaHtml5', color: '#FF4500', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'CSS', icon: 'FaCss3Alt', color: '#00BFFF', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'JavaScript', icon: 'IoLogoJavascript', color: '#FFFF00', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'TypeScript', icon: 'SiTypescript', color: '#007ACC', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'NodeJS', icon: 'FaNodeJs', color: '#68A063', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'MongoDB', icon: 'DiMongodb', color: '#4DB33D', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'SQL', icon: 'BsFiletypeSql', color: '#FFD700', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'Docker', icon: 'FaDocker', color: '#0DB7ED', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'Git', icon: 'FaGitAlt', color: '#F05032', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'Github', icon: 'FaGithub', color: '#171515', level: 3, experience: 3, type: 'skill' },
-// 	{ name: 'Comunicação', icon: 'RiSpeakLine', color: '#00BFFF', level: 3, experience: 3, type: 'competence' },
-// 	{ name: 'Trabalho em equipe', icon: 'MdGroups2', color: '#00BFFF', level: 3, experience: 3, type: 'competence' },
-// 	{ name: 'Foco', icon: 'RiFocus3Fill', color: '#00BFFF', level: 3, experience: 3, type: 'competence' },
-// 	{ name: 'Persistência', icon: 'SiPersistent', color: '#00BFFF', level: 3, experience: 3, type: 'competence' },
-// ]
-
 export default function ConfigSkill() {
 	const { setAlert } = useAlert()
 	const queryClient = useQueryClient()
@@ -47,6 +30,7 @@ export default function ConfigSkill() {
 	const createSkill = useCreateSkillMutation({
 		onSuccess: () => {
 			setAlert({ title: 'Sucesso!', message: 'Skill criada com sucesso!', type: 'success' })
+			queryClient.invalidateQueries('get-skill')
 		},
 		onError: () => {
 			setAlert({ title: 'Erro ao criar About!', message: 'Erro ao criar Skill!', type: 'error' })

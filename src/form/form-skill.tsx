@@ -76,7 +76,7 @@ export default function FormSkill({ selectedSkill, handleSave }: SkillFormProps)
 					name='experience'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel className='text-gray-300'>Experiência</FormLabel>
+							<FormLabel className='text-gray-300'>Tempo de experiência</FormLabel>
 							<FormControl>
 								<Input
 									{...field}
