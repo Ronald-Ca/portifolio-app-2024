@@ -5,10 +5,14 @@ import { useGetAboutQuery } from '@/queries/about'
 import LoadingSpinner from '@/components/common/loading'
 import { ButtonCurriculum } from '@/components/ButtonCurriculum'
 import { useGetCurriculumQuery } from '@/queries/curriculum'
+import { useGetExperienceQuery } from '@/queries/experience'
+import { useGetSkillsQuery } from '@/queries/skill'
 
 export default function About() {
 	const { data: about } = useGetAboutQuery()
 	const { data: curriculum } = useGetCurriculumQuery()
+	const { data: experiences } = useGetExperienceQuery()
+	const { data: skills } = useGetSkillsQuery()
 
 	const aboutInfo = [
 		{
@@ -27,6 +31,10 @@ export default function About() {
 			icon: FaHouseDamage,
 		},
 	]
+
+	const filteredSkills = skills?.filter((skill) =>
+		experiences?.some((experience) => experience.experienceSkill.some((experienceSkill) => experienceSkill.skillId === skill.id)),
+	)
 
 	if (!about) return <LoadingSpinner />
 
@@ -62,66 +70,44 @@ export default function About() {
 					<hr className='border-[2px] border-[#00BFFF] w-[50%] rounded-[10px]' />
 				</div>
 				<div className='flex flex-wrap justify-between gap-5'>
-					{experiences.map((experience, index) => (
-						<div key={index} className='border-[1px] rounded-[10px] border-[#00BFFF] p-4 flex-1 min-w-[300px]'>
-							<h2 className='text-2xl text-gray-300 flex items-center pb-2 border-b-[1px] border-[#00BFFF]'>
-								<MdDriveFileRenameOutline className='mr-[5px] text-[#00BFFF]' /> {experience.company}
-							</h2>
-							<p className='flex flex-col text-gray-300 text-xl mt-2'>
-								{experience.role}
-								<span className='text-slate-400 text-lg font-semibold'> ({experience.period})</span>
-							</p>
-							<h3 className='text-xl text-[#00BFFF] mt-2'>Atividades:</h3>
-							<ul className='list-disc list-inside'>
-								{experience.activities.map((activity, idx) => (
-									<li key={idx} className='text-gray-300 text-xl'>
-										{activity}
-									</li>
-								))}
-							</ul>
-							<h3 className='text-xl text-[#00BFFF] mt-2 mb-[10px]'>Stacks:</h3>
-							<ul className='flex flex-wrap gap-2'>
-								{experience.stacks.map((stack, idx) => (
-									<li
-										key={idx}
-										className='border-[2px] border-[#00BFFF] bg-slate-950 rounded-[8px] px-[15px] py-[3px] text-gray-300 font-bold'
-									>
-										{stack}
-									</li>
-								))}
-							</ul>
-						</div>
-					))}
+					{experiences &&
+						experiences.map((experience, index) => (
+							<div key={index} className='border-[1px] rounded-[10px] border-[#00BFFF] p-4 flex-1 min-w-[300px]'>
+								<h2 className='text-2xl text-gray-300 flex items-center pb-2 border-b-[1px] border-[#00BFFF]'>
+									<MdDriveFileRenameOutline className='mr-[5px] text-[#00BFFF]' /> {experience.company}
+								</h2>
+								<p className='flex flex-col text-gray-300 text-xl mt-2'>
+									{experience.role}
+									<span className='text-slate-400 text-lg font-semibold'>
+										{experience.mothInitial}/{experience.yearInitial}
+										{' - '}
+										{experience.mothFinal}/{experience.yearFinal}
+									</span>
+								</p>
+								<h3 className='text-xl text-[#00BFFF] mt-2'>Atividades:</h3>
+								<ul className='list-disc list-inside'>
+									{experience.activities.map((activity, idx) => (
+										<li key={idx} className='text-gray-300 text-xl'>
+											{activity}
+										</li>
+									))}
+								</ul>
+								<h3 className='text-xl text-[#00BFFF] mt-2 mb-[10px]'>Stacks:</h3>
+
+								<ul className='flex flex-wrap gap-2'>
+									{filteredSkills?.map((skill, idx) => (
+										<li
+											key={idx}
+											className='border-[2px] border-[#00BFFF] bg-slate-950 rounded-[8px] px-[15px] py-[3px] text-gray-300 font-bold'
+										>
+											{skill.name}
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
 				</div>
 			</div>
 		</div>
 	)
 }
-
-const experiences = [
-	{
-		company: 'BSN SOLUTIONS',
-		role: 'Desenvolvedor Full Stack Júnior',
-		period: '2022 - 2023',
-		activities: [
-			'Desenvolvimento de aplicações web.',
-			'Manutenção de aplicações web.',
-			'Desenvolvimento de banco de dados NoSQL.',
-			'Desenvolvimento em arquitetura MVC.',
-		],
-		stacks: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'NodeJS', 'NoSQL', 'MongoDB', 'Git', 'GitHub', 'AWS S3'],
-	},
-	{
-		company: 'ATM SOLUÇÕES EM SERVIÇOS',
-		role: 'Desenvolvedor Full Stack Júnior',
-		period: '2023 - Atual',
-		activities: [
-			'Desenvolvimento de aplicações web.',
-			'Manutenção de aplicações web.',
-			'Desenvolvimento de APIs RestFul.',
-			'Desenvolvimento de banco de dados SQL.',
-			'Desenvolvimento em arquitetura MVC.',
-		],
-		stacks: ['JavaScript', 'TypeScript', 'React', 'NodeJS', 'SQL', 'SQL SERVER', 'Git', 'GitHub', 'Azure'],
-	},
-]

@@ -41,7 +41,6 @@ export function FormProject({ selectedProject, handleSave, loading }: ProjectFor
 
 	const { data: skills } = useGetSkillsQuery()
 
-	// Funções Auxiliares
 	const handleFileChange = (
 		event: React.ChangeEvent<HTMLInputElement>,
 		setPreview: React.Dispatch<React.SetStateAction<string | null>>,
