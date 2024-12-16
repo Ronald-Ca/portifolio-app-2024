@@ -3,9 +3,11 @@ import { Button } from '@/components/ui/button'
 import { TiUploadOutline } from 'react-icons/ti'
 import { useCreateCurriculumMutation, useGetCurriculumQuery } from '@/queries/curriculum'
 import { useAlert } from '@/components/common/alert'
+import { useQueryClient } from 'react-query'
 
 export default function ConfigCurriculum() {
 	const { setAlert } = useAlert()
+	const queryClient = useQueryClient()
 	const [file, setFile] = useState<File | null>(null)
 	const [fileName, setFileName] = useState<string | null>(null)
 	const [localPreviewUrl, setLocalPreviewUrl] = useState<string | null>(null)
@@ -29,6 +31,7 @@ export default function ConfigCurriculum() {
 
 	const createCurriculum = useCreateCurriculumMutation({
 		onSuccess: () => {
+			queryClient.invalidateQueries('get-curriculum')
 			setAlert({ title: 'Sucesso!', message: 'Currículo criado com sucesso!', type: 'success' })
 			if (localPreviewUrl) {
 				URL.revokeObjectURL(localPreviewUrl)
@@ -40,9 +43,35 @@ export default function ConfigCurriculum() {
 		},
 	})
 
+	const updateCurriculum = useCreateCurriculumMutation({
+		onSuccess: () => {
+			queryClient.invalidateQueries('get-curriculum')
+			setAlert({ title: 'Sucesso!', message: 'Currículo atualizado com sucesso!', type: 'success' })
+			if (localPreviewUrl) {
+				URL.revokeObjectURL(localPreviewUrl)
+				setLocalPreviewUrl(null)
+			}
+		},
+		onError: () => {
+			setAlert({ title: 'Erro ao atualizar currículo!', message: 'Erro ao atualizar o currículo!', type: 'error' })
+		},
+	})
+
+	const handleSave = () => {
+		if (curriculum?.curriculum) {
+			updateCurriculum.mutate({ curriculum: file as File, fileName: fileName as string, id: curriculum.id })
+		} else {
+			createCurriculum.mutate({ curriculum: file as File, fileName: fileName as string })
+		}
+	}
+
 	useEffect(() => {
 		if (curriculum?.curriculum) {
 			setFileName(curriculum.fileName as string)
+
+			if (typeof curriculum.curriculum === 'string') {
+				setLocalPreviewUrl(curriculum.curriculum)
+			}
 		}
 	}, [curriculum])
 
@@ -57,7 +86,7 @@ export default function ConfigCurriculum() {
 					</Button>
 
 					<Button
-						onClick={() => createCurriculum.mutate({ curriculum: file as File, fileName: fileName as string })}
+						onClick={handleSave}
 						className='bg-[#00BFFF] text-slate-950 border-[1px] border-slate-950 hover:text-[#00BFFF] hover:bg-[#1c222b] hover:border-[#00BFFF]'
 					>
 						Salvar

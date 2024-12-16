@@ -11,8 +11,11 @@ export function ButtonCurriculum({ id }: ButtonCurriculumProps) {
 
 	const downloadCurriculum = async () => {
 		if (id) {
-			const secureUrl = await curriculumService.downloadCurriculum(id)
-			window.open(secureUrl)
+			const base64 = await curriculumService.downloadCurriculum(id)
+			const link = document.createElement('a')
+			link.href = base64
+			link.download = 'curriculo.pdf'
+			link.click()
 		}
 	}
 

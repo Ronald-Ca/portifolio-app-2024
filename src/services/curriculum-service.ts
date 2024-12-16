@@ -32,7 +32,7 @@ export default class CurriculumService extends BaseService {
 
 	async downloadCurriculum(id: string): Promise<string> {
 		const response = await api.get(`/curriculum/download/${id}`)
-		return response.data.data.download_url
+		return response.data.data.base64
 	}
 }
 
