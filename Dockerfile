@@ -4,11 +4,10 @@ FROM node:20 AS builder
 WORKDIR /app
 # Copie os arquivos de configuração e dependências do projeto
 COPY package.json yarn.lock ./
-# Instale as dependências usando Yarn
 # Antes de instalar as dependências, crie o diretório de cache
 RUN mkdir -p /usr/local/share/.cache/yarn
 # Instale com cache ativado
-RUN yarn install --cache-folder /usr/local/share/.cache/yarn
+RUN yarn --cache-folder /usr/local/share/.cache/yarn
 
 COPY . .
 # Compile o projeto (gera os arquivos estáticos na pasta dist)
