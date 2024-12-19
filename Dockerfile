@@ -4,14 +4,13 @@ FROM node:20 AS builder
 WORKDIR /app
 # Copie os arquivos de configuração e dependências do projeto
 COPY package.json yarn.lock ./
-# Antes de instalar as dependências, crie o diretório de cache
-RUN mkdir -p /usr/local/share/.cache/yarn
-# Instale com cache ativado
-RUN yarn --cache-folder /usr/local/share/.cache/yarn
-
+# Instale as dependências usando Yarn
+RUN yarn install
+# Copie o restante do código do projeto
 COPY . .
 # Compile o projeto (gera os arquivos estáticos na pasta dist)
-RUN yarn build
+RUN NODE_OPTIONS="--max-old-space-size=2048" yarn build
+
 # Use uma imagem mais leve para servir os arquivos estáticos
 FROM nginx:stable-alpine
 # Copie os arquivos estáticos para o diretório de publicação do Nginx
