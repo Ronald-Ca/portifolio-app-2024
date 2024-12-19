@@ -75,7 +75,7 @@ const ProjectCard = ({ project, skills }: ProjectCardProps) => {
 								href={project.link}
 								target='_blank'
 								rel='noreferrer'
-								className='transition-colors duration-[3000ms] hover:text-[#00BFFF] underline decoration-solid'
+								className='transition-colors hover:text-[#00BFFF] underline decoration-solid'
 							>
 								{project.link}
 							</a>
