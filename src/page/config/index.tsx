@@ -58,49 +58,49 @@ export default function Config() {
 					<ul className='flex flex-col justify-center items-center gap-[10px] text-gray-50'>
 						<li
 							onClick={() => setActiveComponent('home')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] mt-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] mt-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<FaHouseUser color='#00BFFF' />
 							Início
 						</li>
 						<li
 							onClick={() => setActiveComponent('about')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<FaAddressCard color='#00BFFF' />
 							Sobre
 						</li>
 						<li
 							onClick={() => setActiveComponent('experience')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<SiLevelsdotfyi color='#00BFFF' />
 							Experiência
 						</li>
 						<li
 							onClick={() => setActiveComponent('skills')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<FaGamepad color='#00BFFF' />
 							Skills
 						</li>
 						<li
 							onClick={() => setActiveComponent('projects')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<PiProjectorScreenChartFill color='#00BFFF' />
 							Projetos
 						</li>
 						<li
 							onClick={() => setActiveComponent('social-media')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<IoShareSocial color='#00BFFF' />
 							Redes Sociais
 						</li>
 						<li
 							onClick={() => setActiveComponent('curriculum')}
-							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors duration-[300ms] hover:bg-[#1c222b]'
+							className='flex justify-center items-center gap-[5px] text-[#00BFFF] border-t-[1px] border-t-[#00BFFF] border-b-[1px] border-b-[#00BFFF] w-[100%] p-[10px] font-semibold cursor-pointer transition-colors hover:bg-[#1c222b]'
 						>
 							<IoDocumentAttach color='#00BFFF' />
 							Currículo
