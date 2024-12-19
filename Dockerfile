@@ -14,7 +14,7 @@ RUN yarn
 COPY . .
 
 # Compile o projeto (gera os arquivos estáticos na pasta dist)
-RUN yarn build
+RUN NODE_OPTIONS="--max-old-space-size=2048" yarn build
 
 # Use uma imagem mais leve para servir os arquivos estáticos
 FROM nginx:stable-alpine
