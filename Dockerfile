@@ -8,7 +8,6 @@ COPY . .
 RUN yarn build
 
 FROM nginx:latest as production
-ENV NODE_ENV production
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Add your nginx.conf
