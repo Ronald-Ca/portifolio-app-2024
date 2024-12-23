@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import SocialMediaService, { SocialMediaType } from '@/services/social-media-service'
+import { DefaultReturnType } from '../services/base-service'
+import SocialMediaService, { SocialMediaType } from '../services/social-media-service'
 import { useMutation, useQuery } from 'react-query'
 
 const socialMedia = new SocialMediaService()

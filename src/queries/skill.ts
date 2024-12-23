@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import SkillService, { SkillType } from '@/services/skill-service'
+import { DefaultReturnType } from '../services/base-service'
+import SkillService, { SkillType } from '../services/skill-service'
 import { useMutation, useQuery } from 'react-query'
 
 const skill = new SkillService()

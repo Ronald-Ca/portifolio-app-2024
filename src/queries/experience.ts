@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import ExperienceService, { ExperienceType } from '@/services/experience-service'
+import { DefaultReturnType } from '../services/base-service'
+import ExperienceService, { ExperienceType } from '../services/experience-service'
 import { useMutation, useQuery } from 'react-query'
 
 const experience = new ExperienceService()

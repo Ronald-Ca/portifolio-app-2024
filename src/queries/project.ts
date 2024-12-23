@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import ProjectsService, { ProjectType } from '@/services/projects-service'
+import { DefaultReturnType } from '../services/base-service'
+import ProjectsService, { ProjectType } from '../services/projects-service'
 import { useMutation, useQuery } from 'react-query'
 
 const project = new ProjectsService()

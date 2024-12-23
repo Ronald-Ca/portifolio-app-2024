@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import CurriculumService, { CurriculumType } from '@/services/curriculum-service'
+import { DefaultReturnType } from '../services/base-service'
+import CurriculumService, { CurriculumType } from '../services/curriculum-service'
 import { useMutation, useQuery } from 'react-query'
 
 const about = new CurriculumService()

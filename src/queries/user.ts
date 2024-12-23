@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import UserService, { UserLoginResponseType, UserLoginType } from '@/services/user-service'
+import { DefaultReturnType } from '../services/base-service'
+import UserService, { UserLoginResponseType, UserLoginType } from '../services/user-service'
 import { useMutation } from 'react-query'
 
 const user = new UserService()

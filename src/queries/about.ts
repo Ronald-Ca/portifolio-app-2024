@@ -1,5 +1,5 @@
-import AboutService, { AboutType } from '@/services/about-service'
-import { DefaultReturnType } from '@/services/base-service'
+import AboutService, { AboutType } from '../services/about-service'
+import { DefaultReturnType } from '../services/base-service'
 import { useMutation, useQuery } from 'react-query'
 
 const about = new AboutService()

@@ -1,5 +1,5 @@
-import { DefaultReturnType } from '@/services/base-service'
-import HomeService, { HomeType } from '@/services/home-service'
+import { DefaultReturnType } from '../services/base-service'
+import HomeService, { HomeType } from '../services/home-service'
 import { useMutation, useQuery } from 'react-query'
 
 const home = new HomeService()

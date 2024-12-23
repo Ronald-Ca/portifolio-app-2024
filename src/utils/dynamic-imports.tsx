@@ -32,45 +32,45 @@ import * as vscIcons from 'react-icons/vsc'
 import * as wiIcons from 'react-icons/wi'
 
 const iconSets = {
-    ...faIcons,
-    ...ioIcons,
-    ...siIcons,
-    ...diIcons,
-    ...bsIcons,
-    ...riIcons,
-    ...mdIcons,
-    ...aiIcons,
-    ...biIcons,
-    ...ciIcons,
-    ...cgIcons,
-    ...fiIcons,
-    ...fcIcons,
-    ...fa6Icons,
-    ...giIcons,
-    ...goIcons,
-    ...grIcons,
-    ...hiIcons,
-    ...hi2Icons,
-    ...imIcons,
-    ...liaIcons,
-    ...io5Icons,
-    ...luIcons,
-    ...piIcons,
-    ...rxIcons,
-    ...slIcons,
-    ...tbIcons,
-    ...tfiIcons,
-    ...tiIcons,
-    ...vscIcons,
-    ...wiIcons,
+	...faIcons,
+	...ioIcons,
+	...siIcons,
+	...diIcons,
+	...bsIcons,
+	...riIcons,
+	...mdIcons,
+	...aiIcons,
+	...biIcons,
+	...ciIcons,
+	...cgIcons,
+	...fiIcons,
+	...fcIcons,
+	...fa6Icons,
+	...giIcons,
+	...goIcons,
+	...grIcons,
+	...hiIcons,
+	...hi2Icons,
+	...imIcons,
+	...liaIcons,
+	...io5Icons,
+	...luIcons,
+	...piIcons,
+	...rxIcons,
+	...slIcons,
+	...tbIcons,
+	...tfiIcons,
+	...tiIcons,
+	...vscIcons,
+	...wiIcons,
 }
 
 export async function loadIcon(iconName: string, color: string): Promise<ReactElement> {
-    const Icon = iconSets[iconName as keyof typeof iconSets]
+	const Icon = iconSets[iconName as keyof typeof iconSets]
 
-    if (!Icon) {
-        throw new Error(`Icon ${iconName} not found`)
-    }
+	if (!Icon) {
+		throw new Error(`Icon ${iconName} not found`)
+	}
 
-    return <Icon size={60} style={{ color }} />
+	return <Icon size={60} style={{ color }} />
 }
