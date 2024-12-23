@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '../../components/ui/button'
 import { FaAddressCard, FaEdit, FaGamepad, FaHouseUser } from 'react-icons/fa'
 import { ImExit } from 'react-icons/im'
 import { PiProjectorScreenChartFill } from 'react-icons/pi'

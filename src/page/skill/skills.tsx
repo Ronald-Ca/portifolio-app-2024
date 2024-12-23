@@ -1,7 +1,7 @@
 import { FaStar } from 'react-icons/fa'
 import { ReactElement, useEffect, useState } from 'react'
-import { loadIcon } from '@/utils/dynamic-imports'
-import { useGetSkillsQuery } from '@/queries/skill'
+import { loadIcon } from '../../utils/dynamic-imports'
+import { useGetSkillsQuery } from '../../queries/skill'
 
 interface Skill {
 	name: string

@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '../../components/ui/button'
 import { TiUploadOutline } from 'react-icons/ti'
-import { useCreateCurriculumMutation, useGetCurriculumQuery } from '@/queries/curriculum'
-import { useAlert } from '@/components/common/alert'
+import { useCreateCurriculumMutation, useGetCurriculumQuery } from '../../queries/curriculum'
+import { useAlert } from '../../components/common/alert'
 import { useQueryClient } from 'react-query'
 
 export default function ConfigCurriculum() {

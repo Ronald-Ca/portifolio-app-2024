@@ -1,12 +1,12 @@
 import { MdDriveFileRenameOutline } from 'react-icons/md'
 import { FaGraduationCap, FaHouseDamage } from 'react-icons/fa'
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar'
-import { useGetAboutQuery } from '@/queries/about'
-import LoadingSpinner from '@/components/common/loading'
-import { ButtonCurriculum } from '@/components/ButtonCurriculum'
-import { useGetCurriculumQuery } from '@/queries/curriculum'
-import { useGetExperienceQuery } from '@/queries/experience'
-import { useGetSkillsQuery } from '@/queries/skill'
+import { useGetAboutQuery } from '../../queries/about'
+import LoadingSpinner from '../../components/common/loading'
+import { ButtonCurriculum } from '../../components/ButtonCurriculum'
+import { useGetCurriculumQuery } from '../../queries/curriculum'
+import { useGetExperienceQuery } from '../../queries/experience'
+import { useGetSkillsQuery } from '../../queries/skill'
 
 export default function About() {
 	const { data: about } = useGetAboutQuery()

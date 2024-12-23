@@ -1,10 +1,10 @@
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarImage } from '../../components/ui/avatar'
+import { Button } from '../../components/ui/button'
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 import fundo from '../../assets/background/office.png'
-import { useGetHomeQuery } from '@/queries/home'
+import { useGetHomeQuery } from '../../queries/home'
 import { useNavigate } from 'react-router-dom'
-import LoadingSpinner from '@/components/common/loading'
+import LoadingSpinner from '../../components/common/loading'
 
 export default function Body() {
 	const { data: home } = useGetHomeQuery()
