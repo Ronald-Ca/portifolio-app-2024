@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
-import { FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { SkillType } from '@/services/skill-service'
+import { Button } from './../components/ui/button'
+import { FormControl, FormField, FormItem, FormLabel } from './../components/ui/form'
+import { Input } from './../components/ui/input'
+import { SkillType } from './../services/skill-service'
 import { RadioGroup, RadioGroupItem } from '@radix-ui/react-radio-group'
 import { FormProvider, useForm } from 'react-hook-form'
 

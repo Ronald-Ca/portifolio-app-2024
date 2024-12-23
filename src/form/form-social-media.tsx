@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
-import { FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { SocialMediaType } from '@/services/social-media-service'
+import { Button } from './../components/ui/button'
+import { FormControl, FormField, FormItem, FormLabel } from './../components/ui/form'
+import { Input } from './../components/ui/input'
+import { SocialMediaType } from './../services/social-media-service'
 import { FormProvider, useForm } from 'react-hook-form'
 
 interface SocialMediaFormProps {

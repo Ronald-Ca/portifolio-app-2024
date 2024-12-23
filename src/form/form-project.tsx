@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from './../components/ui/button'
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -6,12 +6,12 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { useGetSkillsQuery } from '@/queries/skill'
-import { ProjectType } from '@/services/projects-service'
+} from './../components/ui/dropdown-menu'
+import { FormControl, FormField, FormItem, FormLabel } from './../components/ui/form'
+import { Input } from './../components/ui/input'
+import { Textarea } from './../components/ui/textarea'
+import { useGetSkillsQuery } from './../queries/skill'
+import { ProjectType } from './../services/projects-service'
 import { useRef, useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 

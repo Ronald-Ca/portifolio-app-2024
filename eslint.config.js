@@ -40,6 +40,5 @@ export default tseslint.config({
 		"unused-imports/no-unused-imports": "error",
 		"jest/expect-expect": "off",
 		"react-hooks/exhaustive-deps": "off",
-		"@typescript-eslint/no-explicit-any": "error"
 	},
 })

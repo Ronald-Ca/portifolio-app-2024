@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from './../components/ui/button'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -7,13 +7,13 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { useGetSkillsQuery } from '@/queries/skill'
-import { ExperienceType } from '@/services/experience-service'
-import { moths, years } from '@/utils/moths-and-years'
+} from './../components/ui/dropdown-menu'
+import { FormControl, FormField, FormItem, FormLabel } from './../components/ui/form'
+import { Input } from './../components/ui/input'
+import { Textarea } from './../components/ui/textarea'
+import { useGetSkillsQuery } from './../queries/skill'
+import { ExperienceType } from './../services/experience-service'
+import { moths, years } from './../utils/moths-and-years'
 import { DropdownMenuCheckboxItem } from '@radix-ui/react-dropdown-menu'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
