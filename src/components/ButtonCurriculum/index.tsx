@@ -1,6 +1,6 @@
 import { IoMdCodeDownload } from 'react-icons/io'
 import { Button } from '../ui/button'
-import CurriculumService from '@/services/curriculum-service'
+import CurriculumService from '../../services/curriculum-service'
 
 interface ButtonCurriculumProps {
 	id?: string
