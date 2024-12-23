@@ -1,4 +1,4 @@
-import api from '@/utils/api'
+import api from '../utils/api'
 import BaseService, { DefaultReturnType } from './base-service'
 
 export default class ProjectsService extends BaseService {
