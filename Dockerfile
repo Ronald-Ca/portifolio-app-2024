@@ -4,10 +4,10 @@ COPY package*.json .
 COPY yarn*.lock .
 RUN yarn
 COPY . .
-RUN yarn build
+# Aumentar limite de memória do Node.js durante o build
+RUN NODE_OPTIONS="--max-old-space-size=4096" yarn build
 
-
-FROM nginx:latest as production
+FROM nginx:latest AS production
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Add your nginx.conf
