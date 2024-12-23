@@ -5,7 +5,7 @@ COPY yarn*.lock .
 RUN yarn
 COPY . .
 # Aumentar limite de memória do Node.js durante o build
-RUN NODE_OPTIONS="--max-old-space-size=4096" yarn build
+RUN NODE_OPTIONS="--max-old-space-size=3072" yarn build
 
 FROM nginx:latest AS production
 COPY --from=builder /app/build /usr/share/nginx/html
