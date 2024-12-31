@@ -7,6 +7,10 @@ export default defineConfig({
 	build: {
 		outDir: './build',
 		chunkSizeWarningLimit: 1500,
+		minify: true,
+		rollupOptions: {
+			treeshake: true,
+		},
 	},
 	server: {
 		host: true,
