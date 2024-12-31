@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "vite --port 5173",
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc -b --skip-non-essential && vite build",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix --ext .ts .",
 		"preview": "vite preview"
