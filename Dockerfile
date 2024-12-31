@@ -2,6 +2,7 @@ FROM node:latest AS builder
 WORKDIR /app
 COPY package*.json .
 COPY yarn*.lock .
+RUN rm -f package-lock.json && yarn install
 RUN yarn
 COPY . .
 # Aumentar limite de memória do Node.js durante o build
