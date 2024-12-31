@@ -5,7 +5,7 @@ COPY yarn*.lock .
 RUN rm -f package-lock.json && yarn install
 RUN yarn
 COPY . .
-RUN yarn build
+RUN NODE_OPTIONS="--max-old-space-size=4096" yarn build
 
 FROM nginx:latest AS production
 COPY --from=builder /app/build /usr/share/nginx/html
