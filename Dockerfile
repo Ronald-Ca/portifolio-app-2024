@@ -5,7 +5,7 @@ COPY package*.json ./
 COPY yarn*.lock ./
 RUN yarn install
 COPY . ./
-RUN yarn build
+RUN NODE_OPTIONS="--max-old-space-size=4096" yarn build --verbose
 
 # Usar apenas os arquivos gerados em produção
 FROM nginx:latest AS production
