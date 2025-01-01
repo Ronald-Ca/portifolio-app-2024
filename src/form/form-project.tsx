@@ -36,8 +36,8 @@ export function FormProject({ selectedProject, handleSave, loading }: ProjectFor
 	const [imagePreview, setImagePreview] = useState<string | null>(typeof selectedProject?.image === 'string' ? selectedProject.image : null)
 	const [videoPreview, setVideoPreview] = useState<string | null>(typeof selectedProject?.video === 'string' ? selectedProject.video : null)
 	const [skillsId, setSkillsId] = useState<string[]>(selectedProject?.projectSkills?.map((skill) => skill.id) || [])
-	const fileInputRef = useRef<HTMLInputElement>(null)
-	const videoInputRef = useRef<HTMLInputElement>(null)
+	const fileInputRef = useRef<HTMLInputElement | null>(null)
+	const videoInputRef = useRef<HTMLInputElement | null>(null)
 
 	const { data: skills } = useGetSkillsQuery()
 
@@ -54,7 +54,7 @@ export function FormProject({ selectedProject, handleSave, loading }: ProjectFor
 		}
 	}
 
-	const handleCameraClick = (inputRef: React.RefObject<HTMLInputElement>) => {
+	const handleCameraClick = (inputRef: React.RefObject<HTMLInputElement | null>) => {
 		inputRef?.current?.click()
 	}
 
